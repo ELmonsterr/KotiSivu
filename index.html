@@ -2,77 +2,103 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oma kotisivu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elmo Ahonen - CV</title>
   <style>
-    /* Lisäsin vähän tyylejä, jotta CV näyttää siistiltä (voit muokata) */
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; }
-    .cv-section { margin-bottom: 20px; }
-    .cv-header { display: flex; align-items: center; margin-bottom: 20px; }
-    .cv-header img { border-radius: 50%; width: 100px; height: 100px; margin-right: 20px; }
-    .cv-list { list-style-type: disc; padding-left: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      line-height: 1.5;
+      color: #333;
+    }
+    h1 {
+      color: #00008b;          /* tumman sininen */
+      margin-bottom: 5px;
+      font-size: 2.2em;
+    }
+    .email {
+      color: #4169e1;
+      margin-top: 0;
+    }
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      float: right;
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+    hr {
+      border: 0;
+      border-top: 2px solid #00008b;
+      margin: 20px 0;
+    }
+    .section-title {
+      color: #00008b;
+      font-size: 1.4em;
+      margin-top: 30px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+    ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    .two-columns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .two-columns > div {
+      width: 48%;
+    }
   </style>
 </head>
 <body>
-  <!-- Yläosa (header) -->
-  <header style="background-color: #1e90ff; color: white; padding: 20px;">
-    <h1 style="margin: 0;">Tervetuloa kotisivulleni</h1>
-    <p style="margin: 8px 0 0 0;">Tämä sivu on julkaistu GitHub Pagesin avulla.</p>
-  </header>
 
-  <!-- Pääsisältö -->
-  <main style="padding: 20px;">
-    <p>Olen ohjelmistokehityksestä kiinnostunut opiskelija. Tällä sivulla esittelen projektejani
-      ja opintojani. Sivun muotoilu on tehty HTML-kielellä.</p>
+  <img src="profiilikuva.jpg" alt="Elmo Ahonen" class="profile-pic">
 
-    <!-- Tähän lisätään CV-osio PDF:stä -->
-    <section class="cv-section">
-      <div class="cv-header">
-        <!-- Profiilikuva – korvaa src-osoite omalla kuvallasi (lataa repoosi) -->
-        <img src="profiilikuva.jpg" alt="Elmo Ahonen">
-        <div>
-          <h1>Elmo Ahonen</h1>
-          <p>elmonster7400@gmail.com</p>
-        </div>
-      </div>
+  <h1>Elmo Ahonen</h1>
+  <p class="email">elmonster7400@gmail.com</p>
 
-      <hr> <!-- Viiva erottamaan osiot, kuten kuvassasi -->
+  <hr>
 
-      <h2>TYÖ KOKEMUS</h2>
-      <h3>Voimistelija valmentaja</h3>
-      <p>1.1.2020 – Nykypäivä</p>
-      <ul class="cv-list">
-        <li>Valmennan 8-12v aloitteellista kilparyhmää</li>
-        <li>Olen valmentanut kaiken laisia ryhmiä tässä parin vuoden aikana</li>
-        <li>Opetin liikkeitä, tekniikkaa ja turvallista harjoittelua</li>
-      </ul>
+  <h2 class="section-title">TYÖKOKEMUS</h2>
+  <h3>Voimistelijavalmentaja</h3>
+  <p>1.1.2020 – Nyky päivä</p>
+  <ul>
+    <li>Valmennan 8–12v aloitteellista kilparyhmää</li>
+    <li>Olen valmentanut kaikenlaisia ryhmiä tässä parin vuoden aikana</li>
+    <li>Opetin liikkeitä, tekniikkaa ja turvallista harjoittelua</li>
+  </ul>
 
-      <h2>Osaamiset mitä sain valmentajana</h2>
-      <ul class="cv-list">
-        <li>Vastuunotto ja luotettavuus</li>
-        <li>Lasten/nuorten kanssa työskentely</li>
-        <li>Kärsivällisyys ja kannustava ote</li>
-        <li>Ryhmän ohjaaminen</li>
-        <li>Kielitaito Suomi ja Englanti</li>
-        <li>Uimahyppyjä harrastanu 7vuotta</li>
-        <li>Tietokoneita osaan käyttää hyvin</li>
-      </ul>
+  <h2 class="section-title">Osaamiset mitä sain valmentajana</h2>
+  <ul>
+    <li>Vastuunotto ja luotettavuus</li>
+    <li>Lasten/nuorten kanssa työskentely</li>
+    <li>Kärsivällisyys ja kannustava ote</li>
+    <li>Ryhmän ohjaaminen</li>
+    <li>Kielitaito: Suomi ja Englanti</li>
+    <li>Uimahyppyjä harrastanut 7 vuotta</li>
+    <li>Tietokoneita osaan käyttää hyvin</li>
+  </ul>
 
-      <h2>KOULUTUS</h2>
+  <div class="two-columns">
+    <div>
+      <h2 class="section-title">KOULUTUS</h2>
       <h3>Pohjankartanon yläaste</h3>
       <p>8.2021 – 6.2025</p>
 
       <h3>Tieto ja viestintätekniikka</h3>
-      <p>8.2025 – Nykypäivä</p>
-    </section>
+      <p>8.2025 – Nyky päivä</p>
+    </div>
 
-    <h2>Yhteys</h2>
-    <p>Voit ottaa yhteyttä sähköpostilla: elmonster7400@gmail.com</p>
-  </main>
+    <div>
+      <!-- Tähän voit lisätä jotain muuta oikealle puolelle jos haluat -->
+    </div>
+  </div>
 
-  <!-- Alatunniste -->
-  <footer style="background-color: #1e90ff; color: white; padding: 20px; text-align: center;">
-    <p>&copy; 2026 Oma kotisivu</p> <!-- Päivitettiin vuosi nykyiseen (2026) -->
-  </footer>
 </body>
 </html>
