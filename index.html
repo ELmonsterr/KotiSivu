@@ -515,6 +515,108 @@
             animation: fadeInUp 1s ease 0.4s both;
         }
 
+        /* ===== PROJECTS SECTION ===== */
+        .projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .project-header i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-header h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .project-tag {
+            background: #e8f5e9;
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-features {
+            margin: 1.5rem 0;
+        }
+
+        .project-features h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.7rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-links a {
+            flex: 1;
+            text-align: center;
+        }
+
         /* ===== GALLERY SECTION ===== */
         .gallery-section {
             background: linear-gradient(135deg, #f1f8e9 0%, #e3f2fd 100%);
@@ -735,107 +837,6 @@
             transition: width 1.5s ease;
         }
 
-        /* ===== PROJECTS SECTION ===== */
-        .projects {
-            background: white;
-        }
-
-        .project-showcase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-bottom: 3rem;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-        }
-
-        .project-image i {
-            font-size: 5rem;
-            color: var(--primary);
-        }
-
-        .project-details h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .project-tag {
-            background: #e8f5e9;
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .projects-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 3rem;
-            background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-
-        .projects-icon {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .upcoming-projects {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .upcoming-projects h4 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .upcoming-projects ul {
-            list-style-type: none;
-            padding-left: 0;
-            text-align: left;
-        }
-
-        .upcoming-projects li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .upcoming-projects li:before {
-            content: "→";
-            color: var(--primary);
-            position: absolute;
-            left: 0;
-        }
-
         /* ===== INTERESTS SECTION ===== */
         .interests {
             background: linear-gradient(135deg, #fff3e0 0%, #fce4ec 100%);
@@ -997,7 +998,7 @@
                 font-size: 3rem;
             }
             
-            .about-content, .skills-container, .footer-content, .project-showcase {
+            .about-content, .skills-container, .footer-content, .projects-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1102,10 +1103,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .projects-content {
-                padding: 2rem 1.5rem;
-            }
-            
             .cv-section {
                 padding: 1.5rem;
             }
@@ -1129,6 +1126,10 @@
             
             .modal-body {
                 padding: 1.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1235,16 +1236,16 @@
                 <div class="edit-section">
                     <h4><i class="fas fa-project-diagram"></i> Projektit</h4>
                     <div class="form-group">
-                        <label for="projectTitle">Projektin nimi</label>
-                        <input type="text" id="projectTitle" class="form-control" value="Yksinkertainen Laskinsovellus">
+                        <label for="projectTitle2">Projektin nimi (Portfolio)</label>
+                        <input type="text" id="projectTitle2" class="form-control" value="Moderni Portfolio Sivusto">
                     </div>
                     <div class="form-group">
-                        <label for="projectDescription">Projektin kuvaus</label>
-                        <textarea id="projectDescription" class="form-control" rows="3">Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.</textarea>
+                        <label for="projectDescription2">Portfolio-sivuston kuvaus</label>
+                        <textarea id="projectDescription2" class="form-control" rows="3">Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, interaktiivisen pelin, kuvagallerian ja dynaamisen muokkausominaisuuden.</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="projectTags">Teknologiat (pilkulla erotettuna)</label>
-                        <input type="text" id="projectTags" class="form-control" value="HTML, CSS, JavaScript, Web Development">
+                        <label for="projectTags2">Portfolio teknologiat</label>
+                        <input type="text" id="projectTags2" class="form-control" value="HTML5, CSS3, JavaScript, Responsive Design, Interactive Elements">
                     </div>
                 </div>
 
@@ -1500,48 +1501,115 @@
         <div class="container">
             <div class="section-title">
                 <h2>Projektini</h2>
-                <p>Käytännön työni ja tulevat ideat</p>
+                <p>Käytännön työni ja web-kehitysprojektit</p>
             </div>
             
-            <!-- Simple Project Showcase -->
-            <div class="project-showcase">
-                <div class="project-image">
-                    <i class="fas fa-calculator"></i>
-                </div>
-                <div class="project-details">
-                    <h3 id="projectTitleDisplay">Yksinkertainen Laskinsovellus</h3>
-                    <p id="projectDescriptionDisplay">Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.</p>
-                    <div class="project-tech" id="projectTagsDisplay">
-                        <span class="project-tag">HTML</span>
-                        <span class="project-tag">CSS</span>
-                        <span class="project-tag">JavaScript</span>
-                        <span class="project-tag">Web Development</span>
+            <div class="projects-grid">
+                <!-- Portfolio Website Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3 id="projectTitleDisplay2">Moderni Portfolio Sivusto</h3>
+                        <p>Interaktiivinen henkilökohtainen sivusto</p>
                     </div>
-                    <p><strong>Ominaisuudet:</strong></p>
-                    <ul class="cv-list">
-                        <li>Peruslaskutoimitukset (+, -, ×, ÷)</li>
-                        <li>Responsiivinen design mobiililaitteille</li>
-                        <li>Virheenkäsittely ja käyttäjäystävällisyys</li>
-                        <li>Näppäimistön ja hiiren tuki</li>
-                    </ul>
+                    <div class="project-content">
+                        <p id="projectDescriptionDisplay2">Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, interaktiivisen pelin, kuvagallerian ja dynaamisen muokkausominaisuuden.</p>
+                        
+                        <div class="project-tech" id="projectTagsDisplay2">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Responsive Design</span>
+                            <span class="project-tag">Interactive Elements</span>
+                        </div>
+                        
+                        <div class="project-features">
+                            <h4>Pääominaisuudet:</h4>
+                            <ul class="feature-list">
+                                <li>Responsiivinen design kaikille näytönkoille</li>
+                                <li>Interaktiivinen muistipeli JavaScriptillä</li>
+                                <li>Reaaliaikainen sisällön muokkaus</li>
+                                <li>Animoitu scrollaus ja hover-efektit</li>
+                                <li>Kuvagalleria ja henkilökohtainen CV</li>
+                                <li>Dynaamiset taitopalkit ja progress barit</li>
+                                <li>Mobile-first -suunnittelu</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#home" class="btn btn-primary">
+                                <i class="fas fa-eye"></i> Esikatsele Sivustoa
+                            </a>
+                            <a href="https://github.com/ELmonsterr" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Calculator Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-calculator"></i>
+                        <h3 id="projectTitleDisplay">Yksinkertainen Laskinsovellus</h3>
+                        <p>Ensimmäinen web-sovellus</p>
+                    </div>
+                    <div class="project-content">
+                        <p id="projectDescriptionDisplay">Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.</p>
+                        
+                        <div class="project-tech" id="projectTagsDisplay">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Web Development</span>
+                        </div>
+                        
+                        <div class="project-features">
+                            <h4>Ominaisuudet:</h4>
+                            <ul class="feature-list">
+                                <li>Peruslaskutoimitukset (+, -, ×, ÷)</li>
+                                <li>Responsiivinen design mobiililaitteille</li>
+                                <li>Virheenkäsittely ja käyttäjäystävällisyys</li>
+                                <li>Näppäimistön ja hiiren tuki</li>
+                                <li>Selkeä ja intuitiivinen käyttöliittymä</li>
+                                <li>Historia-toiminto</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary" onclick="showDemoAlert()">
+                                <i class="fas fa-play"></i> Esikatsele
+                            </a>
+                            <a href="https://github.com/ELmonsterr" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Future Projects Section -->
+            <div class="section-title" style="margin-top: 4rem;">
+                <h2>Tulevat Projektit</h2>
+                <p>Ideat ja suunnitelmat kehitystyöhön</p>
             </div>
             
             <div class="projects-content">
                 <div class="projects-icon">
                     <i class="fas fa-lightbulb"></i>
                 </div>
-                <h3>Tulevat Projektit</h3>
+                <h3>Projektit kehityksessä</h3>
                 <p>Opiskeluni aikana olen keskittynyt perusasioiden oppimiseen, ja olen innokas aloittamaan uusia projekteja. Alla on suunnitelmia tuleville projekteille:</p>
                 
                 <div class="upcoming-projects">
                     <h4><i class="fas fa-list-check"></i> Tulevat ideat</h4>
                     <ul>
-                        <li>Henkilökohtainen portfolio-sivusto (kehitteillä)</li>
                         <li>Voimisteluseuran verkkosivuston päivitys</li>
                         <li>Yksinkertainen mobiilisovellus treeniohjelmien seuraamiseen</li>
                         <li>Kotisivujen luonti pienille yrityksille</li>
                         <li>Python-ohjelma matematiikan harjoitteluun</li>
+                        <li>React-pohjainen sääsovellus</li>
+                        <li>JavaScript-peli (platformer tai puzzle)</li>
                     </ul>
                 </div>
                 
@@ -1810,6 +1878,11 @@
             });
         });
         
+        // Demo alert function
+        function showDemoAlert() {
+            alert("Laskinsovelluksen demo on vielä kehitteillä!\n\nTämä on esimerkki projektista, jonka olen suunnitellut kehittäävänni. Sovellus tulisi sisältämään kaikki peruslaskutoimitukset ja käyttäjäystävällisen käyttöliittymän.");
+        }
+        
         // ===== EDIT MODAL FUNCTIONALITY =====
         const editBtn = document.getElementById('editBtn');
         const editModal = document.getElementById('editModal');
@@ -1833,7 +1906,10 @@
             skill4: "Office-ohjelmistot:90",
             projectTitle: "Yksinkertainen Laskinsovellus",
             projectDescription: "Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.",
-            projectTags: "HTML, CSS, JavaScript, Web Development"
+            projectTags: "HTML, CSS, JavaScript, Web Development",
+            projectTitle2: "Moderni Portfolio Sivusto",
+            projectDescription2: "Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, interaktiivisen pelin, kuvagallerian ja dynaamisen muokkausominaisuuden.",
+            projectTags2: "HTML5, CSS3, JavaScript, Responsive Design, Interactive Elements"
         };
 
         // Open modal
@@ -1859,14 +1935,20 @@
             document.getElementById('skill3').value = `${document.getElementById('skillName3').textContent}:${document.getElementById('skillPercent3').textContent.replace('%', '')}`;
             document.getElementById('skill4').value = `${document.getElementById('skillName4').textContent}:${document.getElementById('skillPercent4').textContent.replace('%', '')}`;
             
-            // Load project
+            // Load projects
             document.getElementById('projectTitle').value = document.getElementById('projectTitleDisplay').textContent;
             document.getElementById('projectDescription').value = document.getElementById('projectDescriptionDisplay').textContent;
+            document.getElementById('projectTitle2').value = document.getElementById('projectTitleDisplay2').textContent;
+            document.getElementById('projectDescription2').value = document.getElementById('projectDescriptionDisplay2').textContent;
             
             // Load project tags
             const tagElements = document.querySelectorAll('#projectTagsDisplay .project-tag');
             const tagArray = Array.from(tagElements).map(tag => tag.textContent);
             document.getElementById('projectTags').value = tagArray.join(', ');
+            
+            const tagElements2 = document.querySelectorAll('#projectTagsDisplay2 .project-tag');
+            const tagArray2 = Array.from(tagElements2).map(tag => tag.textContent);
+            document.getElementById('projectTags2').value = tagArray2.join(', ');
         });
 
         // Close modal
@@ -1928,22 +2010,29 @@
             updateSkill(3, 'skill3');
             updateSkill(4, 'skill4');
             
-            // Update project
+            // Update projects
             document.getElementById('projectTitleDisplay').textContent = document.getElementById('projectTitle').value;
             document.getElementById('projectDescriptionDisplay').textContent = document.getElementById('projectDescription').value;
+            document.getElementById('projectTitleDisplay2').textContent = document.getElementById('projectTitle2').value;
+            document.getElementById('projectDescriptionDisplay2').textContent = document.getElementById('projectDescription2').value;
             
             // Update project tags
-            const projectTagsContainer = document.getElementById('projectTagsDisplay');
-            projectTagsContainer.innerHTML = '';
-            const tags = document.getElementById('projectTags').value.split(',');
-            tags.forEach(tag => {
-                if (tag.trim()) {
-                    const span = document.createElement('span');
-                    span.className = 'project-tag';
-                    span.textContent = tag.trim();
-                    projectTagsContainer.appendChild(span);
-                }
-            });
+            const updateProjectTags = (containerId, tagsInputId) => {
+                const projectTagsContainer = document.getElementById(containerId);
+                projectTagsContainer.innerHTML = '';
+                const tags = document.getElementById(tagsInputId).value.split(',');
+                tags.forEach(tag => {
+                    if (tag.trim()) {
+                        const span = document.createElement('span');
+                        span.className = 'project-tag';
+                        span.textContent = tag.trim();
+                        projectTagsContainer.appendChild(span);
+                    }
+                });
+            };
+            
+            updateProjectTags('projectTagsDisplay', 'projectTags');
+            updateProjectTags('projectTagsDisplay2', 'projectTags2');
             
             // Close modal and show success message
             editModal.classList.remove('active');
@@ -1968,6 +2057,9 @@
                 document.getElementById('projectTitle').value = defaultValues.projectTitle;
                 document.getElementById('projectDescription').value = defaultValues.projectDescription;
                 document.getElementById('projectTags').value = defaultValues.projectTags;
+                document.getElementById('projectTitle2').value = defaultValues.projectTitle2;
+                document.getElementById('projectDescription2').value = defaultValues.projectDescription2;
+                document.getElementById('projectTags2').value = defaultValues.projectTags2;
                 
                 showNotification('Oletusarvot palautettu!');
             }
