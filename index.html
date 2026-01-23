@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elmo Ahonen - Portfolio & Henkilökohtainen Sivusto</title>
+    <title>Elmo Ahonen - Henkilökohtainen Sivusto</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,15 +16,15 @@
     <style>
         /* ===== GLOBAL STYLES ===== */
         :root {
-            --primary: #2563eb;
-            --secondary: #7c3aed;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --primary: #2e7d32; /* Vihreä luonnonmukainen */
+            --secondary: #1565c0; /* Syväsini */
+            --accent: #ff9800; /* Oranssi korostukseen */
+            --dark: #263238; /* Tummanharmaa */
+            --light: #f5f7fa; /* Vaalea tausta */
+            --gray: #607d8b; /* Harmaa teksteihin */
+            --success: #4caf50;
+            --warning: #ffb300;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
         }
 
@@ -42,18 +42,18 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background-color: var(--light);
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.2;
+            font-weight: 600;
+            line-height: 1.3;
             margin-bottom: 1rem;
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
@@ -61,18 +61,19 @@
         }
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             position: relative;
             display: inline-block;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
+            color: var(--dark);
         }
 
         h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 0;
-            width: 70px;
+            width: 60px;
             height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 2px;
@@ -99,9 +100,9 @@
 
         .btn {
             display: inline-block;
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
             border: none;
@@ -129,31 +130,13 @@
             color: white;
         }
 
-        .btn-project {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.5rem;
-            background: var(--primary);
-            color: white;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .btn-project:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
         section {
-            padding: 6rem 0;
+            padding: 5rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3.5rem;
         }
 
         .section-title h2 {
@@ -177,15 +160,16 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             transition: var(--transition);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         header.scrolled {
-            box-shadow: var(--shadow);
             padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         nav {
@@ -195,7 +179,7 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--primary);
             display: flex;
@@ -204,7 +188,7 @@
 
         .logo i {
             margin-right: 0.5rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         .nav-links {
@@ -213,18 +197,19 @@
         }
 
         .nav-links li {
-            margin-left: 2.5rem;
+            margin-left: 2rem;
         }
 
         .nav-links a {
             font-weight: 500;
             position: relative;
+            color: var(--dark);
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -4px;
             left: 0;
             width: 0;
             height: 2px;
@@ -240,36 +225,36 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--dark);
             cursor: pointer;
         }
 
         /* ===== HERO SECTION ===== */
         .hero {
-            height: 100vh;
+            height: 90vh;
             display: flex;
             align-items: center;
             position: relative;
+            background: linear-gradient(135deg, #e8f5e9 0%, #bbdefb 100%);
             overflow: hidden;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 700px;
             position: relative;
             z-index: 2;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
             animation: fadeInUp 1s ease;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
             animation: fadeInUp 1s ease 0.2s both;
         }
 
@@ -282,12 +267,13 @@
         .hero-image {
             position: absolute;
             right: 5%;
-            bottom: 0;
-            width: 40%;
-            height: 80%;
-            background: url('https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35%;
+            height: 70%;
+            background: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center;
             background-size: cover;
-            border-radius: 20px;
+            border-radius: 15px;
             animation: fadeInRight 1.5s ease;
             box-shadow: var(--shadow);
         }
@@ -296,71 +282,67 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
+            gap: 3.5rem;
+            align-items: start;
         }
 
         .profile-image {
             width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 100%);
-            border-radius: 20px;
+            height: 380px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
             overflow: hidden;
-            position: relative;
+            box-shadow: var(--shadow);
         }
 
         .profile-image i {
-            font-size: 8rem;
-            opacity: 0.8;
+            font-size: 7rem;
+            opacity: 0.9;
         }
 
         .contact-info {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
+            padding: 1.8rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
+        .contact-info h3 {
+            color: var(--dark);
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
         .contact-info p {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.7rem;
         }
 
         .contact-info i {
             color: var(--primary);
             width: 20px;
+            text-align: center;
         }
 
         .cv-section {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            margin-top: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2.2rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow);
         }
 
         .cv-item {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .cv-item:last-child {
@@ -371,18 +353,19 @@
 
         .cv-item h3 {
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 1.2rem;
         }
 
         .cv-date {
             display: inline-block;
-            background: #e0f2fe;
+            background: #e8f5e9;
             color: var(--primary);
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
         }
 
         .cv-list {
@@ -391,188 +374,196 @@
         }
 
         .cv-list li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
+            margin-bottom: 0.7rem;
+            padding-left: 1.3rem;
             position: relative;
         }
 
         .cv-list li:before {
             content: "•";
             color: var(--primary);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             position: absolute;
             left: 0;
-            top: -0.5rem;
+            top: -0.3rem;
         }
 
         .cv-download {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
+            gap: 0.8rem;
+            padding: 0.9rem 1.8rem;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: white;
-            border-radius: 10px;
+            border-radius: 8px;
             text-decoration: none;
             transition: var(--transition);
             margin-top: 1rem;
         }
 
         .cv-download:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow);
         }
 
         .cv-download i {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
         /* ===== SKILLS SECTION ===== */
         .skills {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-radius: 30px;
-            margin: 2rem;
+            background: linear-gradient(135deg, #f1f8e9 0%, #e3f2fd 100%);
         }
 
         .skills-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
+            gap: 2.5rem;
         }
 
         .skill-category h3 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.3rem;
             color: var(--dark);
+            font-size: 1.3rem;
         }
 
         .skill-item {
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .skill-info {
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.5rem;
+            font-size: 0.95rem;
         }
 
         .skill-bar {
-            height: 10px;
-            background-color: #e2e8f0;
-            border-radius: 5px;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .skill-progress {
             height: 100%;
-            border-radius: 5px;
+            border-radius: 4px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             transition: width 1.5s ease;
         }
 
         /* ===== PROJECTS SECTION ===== */
-        .projects-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .filter-btn {
-            padding: 0.6rem 1.5rem;
+        .projects {
             background: white;
-            border: 2px solid #e2e8f1;
-            border-radius: 50px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            border-color: transparent;
+        .projects-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-            position: relative;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-image {
-            height: 220px;
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .project-tag {
-            padding: 0.3rem 0.8rem;
-            background: #e0f2fe;
+        .projects-icon {
+            font-size: 4rem;
             color: var(--primary);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            margin-bottom: 1.5rem;
         }
 
-        .project-links {
+        .projects-content h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .upcoming-projects {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .upcoming-projects h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .upcoming-projects ul {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: left;
+        }
+
+        .upcoming-projects li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .upcoming-projects li:before {
+            content: "→";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* ===== INTERESTS SECTION ===== */
+        .interests {
+            background: linear-gradient(135deg, #f9fbe7 0%, #f3e5f5 100%);
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .interest-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .interest-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+        }
+
+        .interest-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: linear-gradient(135deg, var(--dark) 0%, #0f172a 100%);
+            background: linear-gradient(135deg, var(--dark) 0%, #37474f 100%);
             color: white;
-            padding: 4rem 0 2rem;
-            border-radius: 40px 40px 0 0;
-            margin-top: 4rem;
+            padding: 3.5rem 0 1.5rem;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
         }
 
         .footer-column h3 {
             color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            margin-bottom: 1.3rem;
+            font-size: 1.2rem;
         }
 
         .footer-links {
@@ -580,91 +571,57 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.7rem;
         }
 
         .footer-links i {
             color: var(--primary);
-            width: 20px;
+            width: 18px;
         }
 
         .footer-links a:hover {
-            color: var(--primary);
+            color: #bbdefb;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 0.8rem;
+            margin-top: 1.3rem;
         }
 
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             transition: var(--transition);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .social-links a:hover {
             background: var(--primary);
-            transform: translateY(-5px) scale(1.1);
+            transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 1.8rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* ===== GALLERY SECTION ===== */
-        .gallery {
-            background: #f8fafc;
-            border-radius: 30px;
-            margin: 2rem;
-            padding: 4rem 0;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-item {
-            border-radius: 15px;
-            overflow: hidden;
-            height: 200px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
+            font-size: 0.85rem;
         }
 
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(25px);
             }
             to {
                 opacity: 1;
@@ -675,7 +632,7 @@
         @keyframes fadeInRight {
             from {
                 opacity: 0;
-                transform: translateX(50px);
+                transform: translateX(40px);
             }
             to {
                 opacity: 1;
@@ -685,7 +642,7 @@
 
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(25px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
@@ -697,15 +654,15 @@
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 992px) {
             h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
             
             h2 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .hero h1 {
-                font-size: 3.2rem;
+                font-size: 3rem;
             }
             
             .about-content, .skills-container, .footer-content {
@@ -717,25 +674,24 @@
             }
             
             .hero-content {
-                margin-top: 0;
                 text-align: center;
             }
             
-            .skills, .gallery {
-                margin: 1rem;
+            .hero-btns {
+                justify-content: center;
             }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 65px;
                 left: 0;
                 width: 100%;
                 background: white;
                 flex-direction: column;
                 align-items: center;
-                padding: 2rem;
+                padding: 1.5rem;
                 box-shadow: var(--shadow);
                 transform: translateY(-100%);
                 opacity: 0;
@@ -749,7 +705,7 @@
             }
             
             .nav-links li {
-                margin: 1rem 0;
+                margin: 0.8rem 0;
             }
             
             .mobile-menu-btn {
@@ -759,45 +715,42 @@
             .hero-btns {
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
+                gap: 0.8rem;
             }
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
             
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+            section {
+                padding: 3.5rem 0;
             }
         }
 
         @media (max-width: 576px) {
             .container {
-                padding: 0 1.5rem;
+                padding: 0 1.2rem;
             }
             
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.3rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
             }
             
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            section {
-                padding: 4rem 0;
+            .projects-content {
+                padding: 2rem 1.5rem;
             }
             
             .cv-section {
@@ -812,7 +765,7 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo">
-                    <i class="fas fa-code"></i>
+                    <i class="fas fa-user-circle"></i>
                     <span>Elmo Ahonen</span>
                 </a>
                 
@@ -825,7 +778,7 @@
                     <li><a href="#about">Minusta & CV</a></li>
                     <li><a href="#skills">Taidot</a></li>
                     <li><a href="#projects">Projektit</a></li>
-                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#interests">Harrastukset</a></li>
                     <li><a href="#contact">Yhteys</a></li>
                 </ul>
             </nav>
@@ -837,13 +790,10 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Hei, olen <span class="highlight">Elmo Ahonen</span></h1>
-                <p>Tervetuloa henkilökohtaisille kotisivuilleni! Olen intohimoinen ohjelmistokehittäjä, voimisteluvalmentaja ja teknologia-ennakkoteija. Tällä sivustolla jaatun ideoita, projekteja ja kokemuksiani.</p>
+                <p>Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.</p>
                 <div class="hero-btns">
-                    <a href="#projects" class="btn btn-primary">Näytä Projektit</a>
-                    <a href="#about" class="btn btn-outline">Näytä CV</a>
-                    <a href="https://www.instagram.com/p/CGh4a0iASGS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="btn btn-outline">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
+                    <a href="#about" class="btn btn-primary">Tutustu CV:hen</a>
+                    <a href="#contact" class="btn btn-outline">Ota Yhteyttä</a>
                 </div>
             </div>
         </div>
@@ -860,28 +810,29 @@
             
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Ohjelmistokehittäjä & Voimisteluvalmentaja</h3>
-                    <p>Hei! Olen Elmo Ahonen, intohimoinen teknologiasta, ohjelmoinnista ja voimistelusta. Yhdistän luovuutta, teknistä osaamista ja liikunnan intohimoa kaikessa mitä teen.</p>
+                    <h3>Opiskelija ja Valmentaja</h3>
+                    <p>Hei! Olen Elmo Ahonen, tieto- ja viestintätekniikan opiskelija sekä kokeneempi voimisteluvalmentaja. Yhdistän teknologian osaamista ja liikunnan intohimoa kaikessa mitä teen.</p>
                     
                     <div class="cv-section">
-                        <h3 style="color: var(--dark); margin-bottom: 2rem;">Työkokemus & Koulutus</h3>
+                        <h3 style="color: var(--dark); margin-bottom: 1.8rem;">Työkokemus & Koulutus</h3>
                         
                         <div class="cv-item">
-                            <span class="cv-date">1.1.2020 - Nykypäivä</span>
+                            <span class="cv-date">1.1.2020 - Nykyhetki</span>
                             <h3>Voimistelijanvalmentaja</h3>
                             <ul class="cv-list">
                                 <li>Valmennan 8-12-vuotiaiden aloittelevaa kilparyhmää</li>
-                                <li>Olen valmentanut monenlaisia ryhmiä parin vuoden aikana</li>
-                                <li>Opetan liikkeitä, tekniikkaa ja turvallista harjoittelua</li>
+                                <li>Kokemusta erilaisista ikäryhmistä ja tasoista</li>
+                                <li>Opetan tekniikkaa, turvallisuutta ja harjoittelumenetelmiä</li>
                             </ul>
                         </div>
                         
                         <div class="cv-item">
-                            <span class="cv-date">8.2025 - Nykypäivä</span>
+                            <span class="cv-date">8.2025 - Nykyhetki</span>
                             <h3>Tieto- ja viestintätekniikan opiskelija</h3>
                             <ul class="cv-list">
-                                <li>Syventynyt ohjelmointiin ja web-kehitykseen</li>
-                                <li>Opiskelen modernien teknologioiden käyttöä</li>
+                                <li>Ohjelmoinnin ja web-kehityksen perusteet</li>
+                                <li>Tietoverkot ja tietotekniikka</li>
+                                <li>Digitaitojen syventäminen</li>
                             </ul>
                         </div>
                         
@@ -889,20 +840,20 @@
                             <span class="cv-date">8.2021 - 6.2025</span>
                             <h3>Pohjankartanon yläaste</h3>
                             <ul class="cv-list">
-                                <li>Perusopetus</li>
+                                <li>Perusopetuksen suoritus</li>
+                                <li>Valinnaisaineina liikunta ja tietotekniikka</li>
                             </ul>
                         </div>
                         
                         <div class="cv-item">
-                            <h3>Osaamiset valmentajana</h3>
+                            <h3>Kehittyneet taidot</h3>
                             <ul class="cv-list">
-                                <li>Vastuunotto ja luotettavuus</li>
-                                <li>Lasten/nuorten kanssa työskentely</li>
-                                <li>Kärsivällisyys ja kannustava ote</li>
-                                <li>Ryhmän ohjaaminen</li>
-                                <li>Kielitaito: Suomi ja Englanti</li>
-                                <li>Uimahypyissä harrastusta 7 vuotta</li>
-                                <li>Tietokoneiden hallinta</li>
+                                <li>Vastuullisuus ja luotettavuus työtehtävissä</li>
+                                <li>Lasten ja nuorten ohjaus ja motivointi</li>
+                                <li>Kärsivällisyys ja kannustava asenne</li>
+                                <li>Suomen ja englannin kielitaito</li>
+                                <li>7 vuoden kokemus uimahypyistä</li>
+                                <li>Tietokoneiden ja ohjelmistojen käyttö</li>
                             </ul>
                         </div>
                         
@@ -911,7 +862,7 @@
                             <i class="fas fa-download"></i>
                             <div>
                                 <strong>Lataa CV PDF-muodossa</strong>
-                                <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Klikkaa ladataksesi täydellinen CV</p>
+                                <p style="margin: 0; font-size: 0.85rem; opacity: 0.9;">Klikkaa ladataksesi täydellinen ansioluettelo</p>
                             </div>
                         </a>
                     </div>
@@ -919,11 +870,11 @@
                 
                 <div class="about-image">
                     <div class="profile-image">
-                        <i class="fas fa-user-tie"></i>
+                        <i class="fas fa-user-graduate"></i>
                     </div>
                     
                     <div class="contact-info">
-                        <h3 style="color: var(--dark); margin-bottom: 1.5rem;">Yhteystiedot</h3>
+                        <h3>Yhteystiedot</h3>
                         <p>
                             <i class="fas fa-envelope"></i>
                             <span>elmonster7400@gmail.com</span>
@@ -937,9 +888,9 @@
                             <span>Helsinki, Suomi</span>
                         </p>
                         
-                        <a href="https://www.instagram.com/p/CGh4a0iASGS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="cv-download" style="width: 100%; justify-content: center; margin-top: 1.5rem;">
+                        <a href="https://www.instagram.com/p/CGh4a0iASGS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="cv-download" style="width: 100%; justify-content: center; margin-top: 1.2rem;">
                             <i class="fab fa-instagram"></i>
-                            <span>Instagram Profiili</span>
+                            <span>Instagram</span>
                         </a>
                     </div>
                 </div>
@@ -952,60 +903,16 @@
         <div class="container">
             <div class="section-title">
                 <h2>Osaamiseni</h2>
-                <p>Tekniset taidot ja osa-alueet joissa olen vahva</p>
+                <p>Tekniset ja henkilökohtaiset taidot</p>
             </div>
             
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3>Frontend</h3>
+                    <h3>Tekniset taidot</h3>
                     
                     <div class="skill-item">
                         <div class="skill-info">
-                            <span>HTML5</span>
-                            <span>98%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="98"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>CSS3 & Sass</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>JavaScript</span>
-                            <span>92%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="92"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>React.js</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="88"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Backend & Muut</h3>
-                    
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Node.js</span>
+                            <span>Ohjelmoinnin perusteet</span>
                             <span>85%</span>
                         </div>
                         <div class="skill-bar">
@@ -1015,31 +922,75 @@
                     
                     <div class="skill-item">
                         <div class="skill-info">
-                            <span>Python</span>
+                            <span>Web-kehitys</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Tietokoneiden käyttö</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Office-ohjelmistot</span>
                             <span>90%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="90"></div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Henkilökohtaiset taidot</h3>
                     
                     <div class="skill-item">
                         <div class="skill-info">
-                            <span>Git & GitHub</span>
-                            <span>94%</span>
+                            <span>Johtaminen</span>
+                            <span>88%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="94"></div>
+                            <div class="skill-progress" data-width="88"></div>
                         </div>
                     </div>
                     
                     <div class="skill-item">
                         <div class="skill-info">
-                            <span>UI/UX Design</span>
-                            <span>80%</span>
+                            <span>Ryhmätyö</span>
+                            <span>92%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="80"></div>
+                            <div class="skill-progress" data-width="92"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Ongelmanratkaisu</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Kielitaito</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
                         </div>
                     </div>
                 </div>
@@ -1048,111 +999,69 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="animate-on-scroll">
+    <section id="projects" class="projects animate-on-scroll">
         <div class="container">
             <div class="section-title">
-                <h2>Projektini</h2>
-                <p>Klikkaa projekteja nähdäksesi lisätietoja</p>
+                <h2>Tulevat Projektit</h2>
+                <p>Suunnitelmat ja ideat kehitystyöhön</p>
             </div>
             
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">Kaikki</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="mobile">Mobiili</button>
-                <button class="filter-btn" data-filter="ai">TeKoäly</button>
-                <button class="filter-btn" data-filter="design">Design</button>
-            </div>
-            
-            <div class="projects-grid">
-                <!-- Project 1 - Clickable -->
-                <div class="project-card" data-category="web" onclick="window.open('https://github.com', '_blank')">
-                    <div class="project-image" style="background: linear-gradient(135deg, #fbcfe8 0%, #a78bfa 100%);"></div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Web</span>
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">UI/UX</span>
-                        </div>
-                        <h3>Moderni E-kauppasovellus</h3>
-                        <p>Täysin responsiivinen verkkokauppasovellus Reactilla ja Node.js:llä. Sisältää reaaliaikaisen haun, ostoskorin ja turvallisen maksutoiminnallisuuden.</p>
-                        <div class="project-links">
-                            <a href="https://github.com" target="_blank" class="btn-project" onclick="event.stopPropagation()">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://esimerkki.fi" target="_blank" class="btn-project" onclick="event.stopPropagation()">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                        </div>
-                    </div>
+            <div class="projects-content">
+                <div class="projects-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Projektit kehityksessä</h3>
+                <p>Opiskeluni aikana olen keskittynyt perusasioiden oppimiseen, ja olen innokas aloittamaan ensimmäiset projektini pian. Alla on suunnitelmia tuleville projekteille:</p>
+                
+                <div class="upcoming-projects">
+                    <h4><i class="fas fa-list-check"></i> Tulevat ideat</h4>
+                    <ul>
+                        <li>Henkilökohtainen portfolio-sivusto (kehitteillä)</li>
+                        <li>Voimisteluseuran verkkosivuston päivitys</li>
+                        <li>Yksinkertainen mobiilisovellus treeniohjelmien seuraamiseen</li>
+                        <li>Kotisivujen luonti pienille yrityksille</li>
+                        <li>Python-ohjelma matematiikan harjoitteluun</li>
+                    </ul>
                 </div>
                 
-                <!-- Project 2 - Clickable -->
-                <div class="project-card" data-category="mobile" onclick="window.open('https://github.com', '_blank')">
-                    <div class="project-image" style="background: linear-gradient(135deg, #a5f3fc 0%, #0ea5e9 100%);"></div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Mobiili</span>
-                            <span class="project-tag">React Native</span>
-                            <span class="project-tag">Firebase</span>
-                        </div>
-                        <h3>Terveyssovellus</h3>
-                        <p>React Native -mobiilisovellus terveystietojen seuraamiseen. Sisältää aktiivisuusseurannan, ruokapäiväkirjan ja unenseurannan.</p>
-                        <div class="project-links">
-                            <a href="https://github.com" target="_blank" class="btn-project" onclick="event.stopPropagation()">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://esimerkki.fi" target="_blank" class="btn-project" onclick="event.stopPropagation()">
-                                <i class="fab fa-google-play"></i> Play Store
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 - Clickable -->
-                <div class="project-card" data-category="ai" onclick="window.open('https://github.com', '_blank')">
-                    <div class="project-image" style="background: linear-gradient(135deg, #bbf7d0 0%, #22c55e 100%);"></div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">TeKoäly</span>
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Koneoppiminen</span>
-                        </div>
-                        <h3>Kasvojentunnistusjärjestelmä</h3>
-                        <p>Python-pohjainen kasvojentunnistusjärjestelmä OpenCV:n ja TensorFlow:n avulla. Tunnistaa ja luokittelee kasvoja reaaliajassa.</p>
-                        <div class="project-links">
-                            <a href="https://github.com" target="_blank" class="btn-project" onclick="event.stopPropagation()">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://esimerkki.fi" target="_blank" class="btn-project" onclick="event.stopPropagation()">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <p style="margin-top: 1.5rem; font-style: italic;">
+                    "Hyvä alku on puoli työtä" - suomalainen sanonta
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery animate-on-scroll">
+    <!-- Interests Section -->
+    <section id="interests" class="interests animate-on-scroll">
         <div class="container">
             <div class="section-title">
-                <h2>Galleria</h2>
-                <p>Kuvia harrastuksistani ja projekteistani</p>
+                <h2>Harrastukset ja Kiinnostuksenkohteet</h2>
+                <p>Mikä minut liikuttaa vapaa-ajallani</p>
             </div>
             
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Voimistelu">
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>Ohjelmointi</h4>
+                    <p>HTML, CSS, JavaScript ja Python kiehtovat minua. Rakastan luoda ja ratkaista ongelmia koodin avulla.</p>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Koodaus">
+                
+                <div class="interest-card">
+                    <i class="fas fa-dumbbell"></i>
+                    <h4>Voimistelu</h4>
+                    <p>7 vuoden kokemus uimahypyistä ja aktiivinen valmentaminen. Liikunta on osa elämäntapaani.</p>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Design">
+                
+                <div class="interest-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h4>Videopelit</h4>
+                    <p>Strategiapelit ja pulmapelit kiinnostavat erityisesti. Haluaisin joskus kehittää oman pelin.</p>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projektit">
+                
+                <div class="interest-card">
+                    <i class="fas fa-music"></i>
+                    <h4>Musiikki</h4>
+                    <p>Kuuntelen monenlaista musiikkia ja olen kiinnostunut äänituotannosta ja musiikin teknisistä puolista.</p>
                 </div>
             </div>
         </div>
@@ -1164,37 +1073,42 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Elmo Ahonen</h3>
-                    <p>Ohjelmistokehittäjä, voimisteluvalmentaja ja teknologia-ennakkoteija. Rakastan luoda ratkaisuja, jotka tekevät elämästä parempaa.</p>
+                    <p>Tieto- ja viestintätekniikan opiskelija ja kokeneempi voimisteluvalmentaja. Aion kehittää taitoja sekä teknologian että liikunnan aloilla.</p>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/p/CGh4a0iASGS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/p/CGh4a0iASGS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:elmonster7400@gmail.com" title="Sähköposti">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#contact" title="Puhelin">
+                            <i class="fas fa-phone"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Pikalinkit</h3>
+                    <h3>Navigointi</h3>
                     <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-home"></i> Koti</a></li>
-                        <li><a href="#about"><i class="fas fa-user"></i> Minusta & CV</a></li>
-                        <li><a href="#skills"><i class="fas fa-code"></i> Taidot</a></li>
-                        <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projektit</a></li>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Koti</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Minusta & CV</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Taidot</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projektit</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Palvelut</h3>
+                    <h3>Osaamisalueet</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-laptop-code"></i> Web-kehitys</a></li>
-                        <li><a href="#"><i class="fas fa-mobile-alt"></i> Mobiilisovellukset</a></li>
-                        <li><a href="#"><i class="fas fa-palette"></i> UI/UX Design</a></li>
-                        <li><a href="#"><i class="fas fa-dumbbell"></i> Voimisteluvalmennus</a></li>
+                        <li><i class="fas fa-check"></i> Ohjelmoinnin perusteet</li>
+                        <li><i class="fas fa-check"></i> Web-kehitys</li>
+                        <li><i class="fas fa-check"></i> Valmennus</li>
+                        <li><i class="fas fa-check"></i> Tietotekniikka</li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Yhteys</h3>
+                    <h3>Yhteystiedot</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-envelope"></i> elmonster7400@gmail.com</li>
                         <li><i class="fas fa-phone"></i> +358 40 123 4567</li>
@@ -1204,7 +1118,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Elmo Ahonen. Kaikki oikeudet pidätetään. | Tämä sivu on luotu rakkaudella koodaamista kohtaan.</p>
+                <p>&copy; 2023 Elmo Ahonen. Kaikki oikeudet pidätetään. | Sivusto päivitetty viimeksi: Marraskuu 2023</p>
             </div>
         </div>
     </footer>
@@ -1234,7 +1148,7 @@
         const header = document.getElementById('header');
         
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
+            if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
@@ -1287,37 +1201,6 @@
             skillsObserver.observe(skillsSection);
         }
         
-        // Project filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filterValue = button.getAttribute('data-filter');
-                
-                projectCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 10);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1329,7 +1212,7 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
                     });
                 }
@@ -1338,6 +1221,14 @@
         
         // Initialize animations
         animateOnScroll();
+        
+        // Add current year to footer
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearSpan = document.querySelector('.copyright');
+            if (yearSpan) {
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2023', new Date().getFullYear());
+            }
+        });
     </script>
 </body>
 </html>
