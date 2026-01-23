@@ -154,6 +154,167 @@
             font-weight: 600;
         }
 
+        /* ===== EDIT BUTTON ===== */
+        .edit-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: none;
+        }
+
+        .edit-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===== EDIT MODAL ===== */
+        .edit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            backdrop-filter: blur(5px);
+        }
+
+        .edit-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: white;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+            max-height: calc(80vh - 120px);
+        }
+
+        .edit-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .edit-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .edit-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
         /* ===== GAME SECTION ===== */
         .game-section {
             background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
@@ -851,6 +1012,14 @@
             .game-section {
                 margin: 1rem;
             }
+            
+            .edit-btn {
+                bottom: 90px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -906,6 +1075,10 @@
             .card {
                 font-size: 1.5rem;
             }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -953,6 +1126,10 @@
             .game-container {
                 padding: 1.5rem;
             }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -960,6 +1137,127 @@
     <!-- AI Note at Bottom -->
     <div class="ai-note">
         Tämä sivusto on luotu tekoälyn avustuksella oppimisen ja esittelyn vuoksi.
+    </div>
+
+    <!-- Edit Button -->
+    <button class="edit-btn" id="editBtn">
+        <i class="fas fa-edit"></i>
+    </button>
+
+    <!-- Edit Modal -->
+    <div class="edit-modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> Muokkaa Sivuston Tietoja</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Hero Section Edit -->
+                <div class="edit-section">
+                    <h4><i class="fas fa-home"></i> Hero-osio</h4>
+                    <div class="form-group">
+                        <label for="heroTitle">Otsikko (Nimi)</label>
+                        <input type="text" id="heroTitle" class="form-control" value="Elmo Ahonen">
+                    </div>
+                    <div class="form-group">
+                        <label for="heroDescription">Kuvaus</label>
+                        <textarea id="heroDescription" class="form-control" rows="3">Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.</textarea>
+                    </div>
+                </div>
+
+                <!-- Personal Info Edit -->
+                <div class="edit-section">
+                    <h4><i class="fas fa-user"></i> Henkilökohtaiset Tiedot</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Sähköposti</label>
+                            <input type="email" id="email" class="form-control" value="elmonster7400@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Puhelinnumero</label>
+                            <input type="text" id="phone" class="form-control" value="+358 40 123 4567">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Sijainti</label>
+                        <input type="text" id="location" class="form-control" value="Helsinki, Suomi">
+                    </div>
+                </div>
+
+                <!-- Work Experience Edit -->
+                <div class="edit-section">
+                    <h4><i class="fas fa-briefcase"></i> Työkokemus</h4>
+                    <div class="form-group">
+                        <label for="workTitle">Työnimike</label>
+                        <input type="text" id="workTitle" class="form-control" value="Voimistelijanvalmentaja">
+                    </div>
+                    <div class="form-group">
+                        <label for="workPeriod">Aikajakso</label>
+                        <input type="text" id="workPeriod" class="form-control" value="1.1.2020 - Nykyhetki">
+                    </div>
+                    <div class="form-group">
+                        <label for="workDescription">Kuvaus (erota pisteillä)</label>
+                        <textarea id="workDescription" class="form-control" rows="3">Valmennan 8-12-vuotiaiden aloittelevaa kilparyhmää. Kokemusta erilaisista ikäryhmistä ja tasoista. Opetan tekniikkaa, turvallisuutta ja harjoittelumenetelmiä.</textarea>
+                    </div>
+                </div>
+
+                <!-- Skills Edit -->
+                <div class="edit-section">
+                    <h4><i class="fas fa-chart-bar"></i> Taidot</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="skill1">Taito 1 & %</label>
+                            <input type="text" id="skill1" class="form-control" value="Ohjelmoinnin perusteet:85">
+                        </div>
+                        <div class="form-group">
+                            <label for="skill2">Taito 2 & %</label>
+                            <input type="text" id="skill2" class="form-control" value="Web-kehitys:80">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="skill3">Taito 3 & %</label>
+                            <input type="text" id="skill3" class="form-control" value="Tietokoneiden käyttö:95">
+                        </div>
+                        <div class="form-group">
+                            <label for="skill4">Taito 4 & %</label>
+                            <input type="text" id="skill4" class="form-control" value="Office-ohjelmistot:90">
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.5rem;">
+                        <i class="fas fa-info-circle"></i> Muoto: "Taidon nimi:prosentti" (esim. "HTML:95")
+                    </p>
+                </div>
+
+                <!-- Projects Edit -->
+                <div class="edit-section">
+                    <h4><i class="fas fa-project-diagram"></i> Projektit</h4>
+                    <div class="form-group">
+                        <label for="projectTitle">Projektin nimi</label>
+                        <input type="text" id="projectTitle" class="form-control" value="Yksinkertainen Laskinsovellus">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDescription">Projektin kuvaus</label>
+                        <textarea id="projectDescription" class="form-control" rows="3">Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectTags">Teknologiat (pilkulla erotettuna)</label>
+                        <input type="text" id="projectTags" class="form-control" value="HTML, CSS, JavaScript, Web Development">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary" id="saveChanges">
+                        <i class="fas fa-save"></i> Tallenna Muutokset
+                    </button>
+                    <button type="button" class="btn btn-outline" id="resetChanges">
+                        <i class="fas fa-undo"></i> Palauta Oletus
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Header & Navigation -->
@@ -993,8 +1291,8 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Hei, olen <span class="highlight">Elmo Ahonen</span></h1>
-                <p>Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.</p>
+                <h1 id="heroTitle">Hei, olen <span class="highlight">Elmo Ahonen</span></h1>
+                <p id="heroDescription">Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.</p>
                 <div class="hero-btns">
                     <a href="#about" class="btn btn-primary">Tutustu CV:hen</a>
                     <a href="#game" class="btn btn-outline">Kokeile Pelii</a>
@@ -1020,9 +1318,9 @@
                         <h3 style="color: var(--dark); margin-bottom: 1.8rem;">Työkokemus & Koulutus</h3>
                         
                         <div class="cv-item">
-                            <span class="cv-date">1.1.2020 - Nykyhetki</span>
-                            <h3>Voimistelijanvalmentaja</h3>
-                            <ul class="cv-list">
+                            <span class="cv-date" id="workPeriodDisplay">1.1.2020 - Nykyhetki</span>
+                            <h3 id="workTitleDisplay">Voimistelijanvalmentaja</h3>
+                            <ul class="cv-list" id="workDescriptionDisplay">
                                 <li>Valmennan 8-12-vuotiaiden aloittelevaa kilparyhmää</li>
                                 <li>Kokemusta erilaisista ikäryhmistä ja tasoista</li>
                                 <li>Opetan tekniikkaa, turvallisuutta ja harjoittelumenetelmiä</li>
@@ -1080,16 +1378,16 @@
                         <h3>Yhteystiedot</h3>
                         <p>
                             <i class="fas fa-envelope"></i>
-                            <span>elmonster7400@gmail.com</span>
+                            <span id="emailDisplay">elmonster7400@gmail.com</span>
                         </p>
                         <p>
                             <i class="fas fa-phone"></i>
-                            <span>+358 40 123 4567</span>
+                            <span id="phoneDisplay">+358 40 123 4567</span>
                         </p>
                         <p class="note">Huom: Puhelinnumero on esimerkki, eikä ole todellinen.</p>
                         <p>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Helsinki, Suomi</span>
+                            <span id="locationDisplay">Helsinki, Suomi</span>
                         </p>
                     </div>
                 </div>
@@ -1109,40 +1407,40 @@
                 <div class="skill-category">
                     <h3>Tekniset taidot</h3>
                     
-                    <div class="skill-item">
+                    <div class="skill-item" id="skillItem1">
                         <div class="skill-info">
-                            <span>Ohjelmoinnin perusteet</span>
-                            <span>85%</span>
+                            <span id="skillName1">Ohjelmoinnin perusteet</span>
+                            <span id="skillPercent1">85%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="85"></div>
                         </div>
                     </div>
                     
-                    <div class="skill-item">
+                    <div class="skill-item" id="skillItem2">
                         <div class="skill-info">
-                            <span>Web-kehitys</span>
-                            <span>80%</span>
+                            <span id="skillName2">Web-kehitys</span>
+                            <span id="skillPercent2">80%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="80"></div>
                         </div>
                     </div>
                     
-                    <div class="skill-item">
+                    <div class="skill-item" id="skillItem3">
                         <div class="skill-info">
-                            <span>Tietokoneiden käyttö</span>
-                            <span>95%</span>
+                            <span id="skillName3">Tietokoneiden käyttö</span>
+                            <span id="skillPercent3">95%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="95"></div>
                         </div>
                     </div>
                     
-                    <div class="skill-item">
+                    <div class="skill-item" id="skillItem4">
                         <div class="skill-info">
-                            <span>Office-ohjelmistot</span>
-                            <span>90%</span>
+                            <span id="skillName4">Office-ohjelmistot</span>
+                            <span id="skillPercent4">90%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="90"></div>
@@ -1211,9 +1509,9 @@
                     <i class="fas fa-calculator"></i>
                 </div>
                 <div class="project-details">
-                    <h3>Yksinkertainen Laskinsovellus</h3>
-                    <p>Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.</p>
-                    <div class="project-tech">
+                    <h3 id="projectTitleDisplay">Yksinkertainen Laskinsovellus</h3>
+                    <p id="projectDescriptionDisplay">Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.</p>
+                    <div class="project-tech" id="projectTagsDisplay">
                         <span class="project-tag">HTML</span>
                         <span class="project-tag">CSS</span>
                         <span class="project-tag">JavaScript</span>
@@ -1404,8 +1702,8 @@
                 <div class="footer-column">
                     <h3>Yhteystiedot</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> elmonster7400@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Helsinki, Suomi</li>
+                        <li><i class="fas fa-envelope"></i> <span id="footerEmail">elmonster7400@gmail.com</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span id="footerLocation">Helsinki, Suomi</span></li>
                     </ul>
                 </div>
             </div>
@@ -1512,6 +1810,229 @@
             });
         });
         
+        // ===== EDIT MODAL FUNCTIONALITY =====
+        const editBtn = document.getElementById('editBtn');
+        const editModal = document.getElementById('editModal');
+        const closeModal = document.getElementById('closeModal');
+        const saveChangesBtn = document.getElementById('saveChanges');
+        const resetChangesBtn = document.getElementById('resetChanges');
+
+        // Default values
+        const defaultValues = {
+            heroTitle: "Hei, olen <span class='highlight'>Elmo Ahonen</span>",
+            heroDescription: "Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.",
+            email: "elmonster7400@gmail.com",
+            phone: "+358 40 123 4567",
+            location: "Helsinki, Suomi",
+            workTitle: "Voimistelijanvalmentaja",
+            workPeriod: "1.1.2020 - Nykyhetki",
+            workDescription: "Valmennan 8-12-vuotiaiden aloittelevaa kilparyhmää. Kokemusta erilaisista ikäryhmistä ja tasoista. Opetan tekniikkaa, turvallisuutta ja harjoittelumenetelmiä.",
+            skill1: "Ohjelmoinnin perusteet:85",
+            skill2: "Web-kehitys:80",
+            skill3: "Tietokoneiden käyttö:95",
+            skill4: "Office-ohjelmistot:90",
+            projectTitle: "Yksinkertainen Laskinsovellus",
+            projectDescription: "Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.",
+            projectTags: "HTML, CSS, JavaScript, Web Development"
+        };
+
+        // Open modal
+        editBtn.addEventListener('click', () => {
+            editModal.classList.add('active');
+            // Load current values into form
+            document.getElementById('heroTitle').value = document.getElementById('heroTitle').textContent;
+            document.getElementById('heroDescription').value = document.getElementById('heroDescription').textContent;
+            document.getElementById('email').value = document.getElementById('emailDisplay').textContent;
+            document.getElementById('phone').value = document.getElementById('phoneDisplay').textContent;
+            document.getElementById('location').value = document.getElementById('locationDisplay').textContent;
+            document.getElementById('workTitle').value = document.getElementById('workTitleDisplay').textContent;
+            document.getElementById('workPeriod').value = document.getElementById('workPeriodDisplay').textContent;
+            
+            // Load work description from list items
+            const workItems = document.querySelectorAll('#workDescriptionDisplay li');
+            const workDescArray = Array.from(workItems).map(li => li.textContent);
+            document.getElementById('workDescription').value = workDescArray.join('. ');
+            
+            // Load skills
+            document.getElementById('skill1').value = `${document.getElementById('skillName1').textContent}:${document.getElementById('skillPercent1').textContent.replace('%', '')}`;
+            document.getElementById('skill2').value = `${document.getElementById('skillName2').textContent}:${document.getElementById('skillPercent2').textContent.replace('%', '')}`;
+            document.getElementById('skill3').value = `${document.getElementById('skillName3').textContent}:${document.getElementById('skillPercent3').textContent.replace('%', '')}`;
+            document.getElementById('skill4').value = `${document.getElementById('skillName4').textContent}:${document.getElementById('skillPercent4').textContent.replace('%', '')}`;
+            
+            // Load project
+            document.getElementById('projectTitle').value = document.getElementById('projectTitleDisplay').textContent;
+            document.getElementById('projectDescription').value = document.getElementById('projectDescriptionDisplay').textContent;
+            
+            // Load project tags
+            const tagElements = document.querySelectorAll('#projectTagsDisplay .project-tag');
+            const tagArray = Array.from(tagElements).map(tag => tag.textContent);
+            document.getElementById('projectTags').value = tagArray.join(', ');
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            editModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        editModal.addEventListener('click', (e) => {
+            if (e.target === editModal) {
+                editModal.classList.remove('active');
+            }
+        });
+
+        // Save changes
+        saveChangesBtn.addEventListener('click', () => {
+            // Update hero section
+            document.getElementById('heroTitle').textContent = document.getElementById('heroTitle').value;
+            document.getElementById('heroDescription').textContent = document.getElementById('heroDescription').value;
+            
+            // Update personal info
+            document.getElementById('emailDisplay').textContent = document.getElementById('email').value;
+            document.getElementById('phoneDisplay').textContent = document.getElementById('phone').value;
+            document.getElementById('locationDisplay').textContent = document.getElementById('location').value;
+            document.getElementById('footerEmail').textContent = document.getElementById('email').value;
+            document.getElementById('footerLocation').textContent = document.getElementById('location').value;
+            
+            // Update work experience
+            document.getElementById('workTitleDisplay').textContent = document.getElementById('workTitle').value;
+            document.getElementById('workPeriodDisplay').textContent = document.getElementById('workPeriod').value;
+            
+            // Update work description list
+            const workDescriptionList = document.getElementById('workDescriptionDisplay');
+            workDescriptionList.innerHTML = '';
+            const workDescriptions = document.getElementById('workDescription').value.split('. ');
+            workDescriptions.forEach(desc => {
+                if (desc.trim()) {
+                    const li = document.createElement('li');
+                    li.textContent = desc.trim();
+                    workDescriptionList.appendChild(li);
+                }
+            });
+            
+            // Update skills
+            const updateSkill = (skillNum, inputId) => {
+                const inputValue = document.getElementById(inputId).value;
+                const [name, percent] = inputValue.split(':');
+                if (name && percent) {
+                    document.getElementById(`skillName${skillNum}`).textContent = name.trim();
+                    document.getElementById(`skillPercent${skillNum}`).textContent = `${percent.trim()}%`;
+                    const skillBar = document.querySelector(`#skillItem${skillNum} .skill-progress`);
+                    skillBar.setAttribute('data-width', percent.trim());
+                    skillBar.style.width = `${percent.trim()}%`;
+                }
+            };
+            
+            updateSkill(1, 'skill1');
+            updateSkill(2, 'skill2');
+            updateSkill(3, 'skill3');
+            updateSkill(4, 'skill4');
+            
+            // Update project
+            document.getElementById('projectTitleDisplay').textContent = document.getElementById('projectTitle').value;
+            document.getElementById('projectDescriptionDisplay').textContent = document.getElementById('projectDescription').value;
+            
+            // Update project tags
+            const projectTagsContainer = document.getElementById('projectTagsDisplay');
+            projectTagsContainer.innerHTML = '';
+            const tags = document.getElementById('projectTags').value.split(',');
+            tags.forEach(tag => {
+                if (tag.trim()) {
+                    const span = document.createElement('span');
+                    span.className = 'project-tag';
+                    span.textContent = tag.trim();
+                    projectTagsContainer.appendChild(span);
+                }
+            });
+            
+            // Close modal and show success message
+            editModal.classList.remove('active');
+            showNotification('Muutokset tallennettu onnistuneesti!');
+        });
+
+        // Reset to defaults
+        resetChangesBtn.addEventListener('click', () => {
+            if (confirm('Haluatko varmasti palauttaa kaikki tiedot oletusarvoihin?')) {
+                document.getElementById('heroTitle').value = defaultValues.heroTitle.replace("<span class='highlight'>", "").replace("</span>", "");
+                document.getElementById('heroDescription').value = defaultValues.heroDescription;
+                document.getElementById('email').value = defaultValues.email;
+                document.getElementById('phone').value = defaultValues.phone;
+                document.getElementById('location').value = defaultValues.location;
+                document.getElementById('workTitle').value = defaultValues.workTitle;
+                document.getElementById('workPeriod').value = defaultValues.workPeriod;
+                document.getElementById('workDescription').value = defaultValues.workDescription;
+                document.getElementById('skill1').value = defaultValues.skill1;
+                document.getElementById('skill2').value = defaultValues.skill2;
+                document.getElementById('skill3').value = defaultValues.skill3;
+                document.getElementById('skill4').value = defaultValues.skill4;
+                document.getElementById('projectTitle').value = defaultValues.projectTitle;
+                document.getElementById('projectDescription').value = defaultValues.projectDescription;
+                document.getElementById('projectTags').value = defaultValues.projectTags;
+                
+                showNotification('Oletusarvot palautettu!');
+            }
+        });
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: var(--shadow);
+                z-index: 1002;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
         // ===== MEMORY GAME =====
         class MemoryGame {
             constructor() {
