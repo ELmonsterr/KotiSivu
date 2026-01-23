@@ -42,7 +42,7 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            background-color: var(--light);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             overflow-x: hidden;
         }
 
@@ -129,6 +129,24 @@
             color: white;
         }
 
+        .btn-project {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn-project:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
         section {
             padding: 6rem 0;
         }
@@ -161,10 +179,11 @@
             z-index: 1000;
             padding: 1.5rem 0;
             transition: var(--transition);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         header.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: var(--shadow);
             padding: 1rem 0;
         }
@@ -262,14 +281,15 @@
 
         .hero-image {
             position: absolute;
-            right: 0;
+            right: 5%;
             bottom: 0;
-            width: 45%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center;
+            width: 40%;
+            height: 80%;
+            background: url('https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center;
             background-size: cover;
-            border-radius: 20px 0 0 20px;
+            border-radius: 20px;
             animation: fadeInRight 1.5s ease;
+            box-shadow: var(--shadow);
         }
 
         /* ===== ABOUT SECTION ===== */
@@ -290,12 +310,51 @@
             box-shadow: var(--shadow);
         }
 
-        .cv-section {
-            background-color: #f8fafc;
+        .profile-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-image i {
+            font-size: 8rem;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            background: white;
             padding: 2rem;
             border-radius: 15px;
             margin-top: 2rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .cv-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .cv-item {
@@ -347,16 +406,16 @@
         }
 
         .cv-download {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 1rem;
-            margin-top: 2rem;
-            padding: 1rem 1.5rem;
+            padding: 1rem 2rem;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: white;
             border-radius: 10px;
             text-decoration: none;
             transition: var(--transition);
+            margin-top: 1rem;
         }
 
         .cv-download:hover {
@@ -370,7 +429,9 @@
 
         /* ===== SKILLS SECTION ===== */
         .skills {
-            background-color: #f0f9ff;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 30px;
+            margin: 2rem;
         }
 
         .skills-container {
@@ -420,7 +481,7 @@
         .filter-btn {
             padding: 0.6rem 1.5rem;
             background: white;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #e2e8f1;
             border-radius: 50px;
             font-weight: 500;
             cursor: pointer;
@@ -428,47 +489,53 @@
         }
 
         .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: white;
-            border-color: var(--primary);
+            border-color: transparent;
         }
 
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .project-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
+            position: relative;
+            cursor: pointer;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .project-image {
-            height: 200px;
+            height: 220px;
             width: 100%;
-            background-color: #e2e8f0;
             background-size: cover;
             background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .project-tag {
@@ -480,11 +547,19 @@
             font-weight: 500;
         }
 
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
         /* ===== FOOTER ===== */
         footer {
-            background: var(--dark);
+            background: linear-gradient(135deg, var(--dark) 0%, #0f172a 100%);
             color: white;
             padding: 4rem 0 2rem;
+            border-radius: 40px 40px 0 0;
+            margin-top: 4rem;
         }
 
         .footer-content {
@@ -506,6 +581,14 @@
 
         .footer-links li {
             margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .footer-links i {
+            color: var(--primary);
+            width: 20px;
         }
 
         .footer-links a:hover {
@@ -522,16 +605,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             transition: var(--transition);
+            font-size: 1.2rem;
         }
 
         .social-links a:hover {
             background: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.1);
         }
 
         .copyright {
@@ -539,6 +623,41 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ===== GALLERY SECTION ===== */
+        .gallery {
+            background: #f8fafc;
+            border-radius: 30px;
+            margin: 2rem;
+            padding: 4rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
 
         /* ===== ANIMATIONS ===== */
@@ -594,14 +713,16 @@
             }
             
             .hero-image {
-                width: 100%;
-                height: 40%;
-                top: 0;
-                border-radius: 0 0 20px 20px;
+                display: none;
             }
             
             .hero-content {
-                margin-top: 40%;
+                margin-top: 0;
+                text-align: center;
+            }
+            
+            .skills, .gallery {
+                margin: 1rem;
             }
         }
 
@@ -637,7 +758,8 @@
             
             .hero-btns {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
+                gap: 1rem;
             }
             
             .projects-grid {
@@ -645,6 +767,10 @@
             }
             
             .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -664,6 +790,18 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            .cv-section {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -687,6 +825,7 @@
                     <li><a href="#about">Minusta & CV</a></li>
                     <li><a href="#skills">Taidot</a></li>
                     <li><a href="#projects">Projektit</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
                     <li><a href="#contact">Yhteys</a></li>
                 </ul>
             </nav>
@@ -698,10 +837,13 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Hei, olen <span class="highlight">Elmo Ahonen</span></h1>
-                <p>Tervetuloa henkilökohtaisille kotisivuilleni! Olen intohimoinen ohjelmistokehittäjä ja teknologia-ennakkoteija. Tällä sivustolla jaatun ideoita, projekteja ja kokemuksiani.</p>
+                <p>Tervetuloa henkilökohtaisille kotisivuilleni! Olen intohimoinen ohjelmistokehittäjä, voimisteluvalmentaja ja teknologia-ennakkoteija. Tällä sivustolla jaatun ideoita, projekteja ja kokemuksiani.</p>
                 <div class="hero-btns">
                     <a href="#projects" class="btn btn-primary">Näytä Projektit</a>
                     <a href="#about" class="btn btn-outline">Näytä CV</a>
+                    <a href="https://www.instagram.com/p/CGh4a0iASGS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
                 </div>
             </div>
         </div>
@@ -776,14 +918,28 @@
                 </div>
                 
                 <div class="about-image">
-                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                        <i class="fas fa-user-tie" style="font-size: 5rem;"></i>
+                    <div class="profile-image">
+                        <i class="fas fa-user-tie"></i>
                     </div>
-                    <div style="text-align: center; margin-top: 1.5rem;">
-                        <p><strong>Sähköposti:</strong> elmonster7400@gmail.com</p>
-                        <!-- Instagram Link -->
-                        <a href="https://www.instagram.com/p/CGh4a0iASGS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
-                            <i class="fab fa-instagram"></i> Instagram
+                    
+                    <div class="contact-info">
+                        <h3 style="color: var(--dark); margin-bottom: 1.5rem;">Yhteystiedot</h3>
+                        <p>
+                            <i class="fas fa-envelope"></i>
+                            <span>elmonster7400@gmail.com</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone"></i>
+                            <span>+358 40 123 4567</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Helsinki, Suomi</span>
+                        </p>
+                        
+                        <a href="https://www.instagram.com/p/CGh4a0iASGS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="cv-download" style="width: 100%; justify-content: center; margin-top: 1.5rem;">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram Profiili</span>
                         </a>
                     </div>
                 </div>
@@ -896,7 +1052,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Projektini</h2>
-                <p>Esittelyä viimeisimmistä ja merkittävimmistä projekteistani</p>
+                <p>Klikkaa projekteja nähdäksesi lisätietoja</p>
             </div>
             
             <div class="projects-filter">
@@ -908,8 +1064,8 @@
             </div>
             
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="web">
+                <!-- Project 1 - Clickable -->
+                <div class="project-card" data-category="web" onclick="window.open('https://github.com', '_blank')">
                     <div class="project-image" style="background: linear-gradient(135deg, #fbcfe8 0%, #a78bfa 100%);"></div>
                     <div class="project-content">
                         <div class="project-tags">
@@ -919,12 +1075,19 @@
                         </div>
                         <h3>Moderni E-kauppasovellus</h3>
                         <p>Täysin responsiivinen verkkokauppasovellus Reactilla ja Node.js:llä. Sisältää reaaliaikaisen haun, ostoskorin ja turvallisen maksutoiminnallisuuden.</p>
-                        <a href="#" class="btn btn-outline" style="margin-top: 1rem;">Katso Projektia</a>
+                        <div class="project-links">
+                            <a href="https://github.com" target="_blank" class="btn-project" onclick="event.stopPropagation()">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://esimerkki.fi" target="_blank" class="btn-project" onclick="event.stopPropagation()">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
-                <div class="project-card" data-category="mobile">
+                <!-- Project 2 - Clickable -->
+                <div class="project-card" data-category="mobile" onclick="window.open('https://github.com', '_blank')">
                     <div class="project-image" style="background: linear-gradient(135deg, #a5f3fc 0%, #0ea5e9 100%);"></div>
                     <div class="project-content">
                         <div class="project-tags">
@@ -934,12 +1097,19 @@
                         </div>
                         <h3>Terveyssovellus</h3>
                         <p>React Native -mobiilisovellus terveystietojen seuraamiseen. Sisältää aktiivisuusseurannan, ruokapäiväkirjan ja unenseurannan.</p>
-                        <a href="#" class="btn btn-outline" style="margin-top: 1rem;">Katso Projektia</a>
+                        <div class="project-links">
+                            <a href="https://github.com" target="_blank" class="btn-project" onclick="event.stopPropagation()">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://esimerkki.fi" target="_blank" class="btn-project" onclick="event.stopPropagation()">
+                                <i class="fab fa-google-play"></i> Play Store
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 3 -->
-                <div class="project-card" data-category="ai">
+                <!-- Project 3 - Clickable -->
+                <div class="project-card" data-category="ai" onclick="window.open('https://github.com', '_blank')">
                     <div class="project-image" style="background: linear-gradient(135deg, #bbf7d0 0%, #22c55e 100%);"></div>
                     <div class="project-content">
                         <div class="project-tags">
@@ -949,8 +1119,40 @@
                         </div>
                         <h3>Kasvojentunnistusjärjestelmä</h3>
                         <p>Python-pohjainen kasvojentunnistusjärjestelmä OpenCV:n ja TensorFlow:n avulla. Tunnistaa ja luokittelee kasvoja reaaliajassa.</p>
-                        <a href="#" class="btn btn-outline" style="margin-top: 1rem;">Katso Projektia</a>
+                        <div class="project-links">
+                            <a href="https://github.com" target="_blank" class="btn-project" onclick="event.stopPropagation()">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://esimerkki.fi" target="_blank" class="btn-project" onclick="event.stopPropagation()">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galleria</h2>
+                <p>Kuvia harrastuksistani ja projekteistani</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Voimistelu">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Koodaus">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Design">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projektit">
                 </div>
             </div>
         </div>
@@ -965,29 +1167,29 @@
                     <p>Ohjelmistokehittäjä, voimisteluvalmentaja ja teknologia-ennakkoteija. Rakastan luoda ratkaisuja, jotka tekevät elämästä parempaa.</p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/p/CGh4a0iASGS/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Pikalinkit</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Koti</a></li>
-                        <li><a href="#about">Minusta & CV</a></li>
-                        <li><a href="#skills">Taidot</a></li>
-                        <li><a href="#projects">Projektit</a></li>
+                        <li><a href="#home"><i class="fas fa-home"></i> Koti</a></li>
+                        <li><a href="#about"><i class="fas fa-user"></i> Minusta & CV</a></li>
+                        <li><a href="#skills"><i class="fas fa-code"></i> Taidot</a></li>
+                        <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projektit</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Palvelut</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Web-kehitys</a></li>
-                        <li><a href="#">Mobiilisovellukset</a></li>
-                        <li><a href="#">UI/UX Design</a></li>
-                        <li><a href="#">Voimisteluvalmennus</a></li>
+                        <li><a href="#"><i class="fas fa-laptop-code"></i> Web-kehitys</a></li>
+                        <li><a href="#"><i class="fas fa-mobile-alt"></i> Mobiilisovellukset</a></li>
+                        <li><a href="#"><i class="fas fa-palette"></i> UI/UX Design</a></li>
+                        <li><a href="#"><i class="fas fa-dumbbell"></i> Voimisteluvalmennus</a></li>
                     </ul>
                 </div>
                 
@@ -995,14 +1197,14 @@
                     <h3>Yhteys</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-envelope"></i> elmonster7400@gmail.com</li>
-                        <li><i class="fas fa-phone"></i> +358 67 420 69</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Oulu, Suomi</li>
+                        <li><i class="fas fa-phone"></i> +358 40 123 4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Helsinki, Suomi</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2026 Elmo Ahonen. Kaikki oikeudet pidätetään. | Tämä sivu on luotu rakkaudella koodaamista kohtaan.</p>
+                <p>&copy; 2023 Elmo Ahonen. Kaikki oikeudet pidätetään. | Tämä sivu on luotu rakkaudella koodaamista kohtaan.</p>
             </div>
         </div>
     </footer>
