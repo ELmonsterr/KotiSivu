@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elmo Ahonen - Henkilökohtainen Sivusto</title>
+    <title>Elmo Ahonen - Portfolio</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,16 +16,17 @@
     <style>
         /* ===== GLOBAL STYLES ===== */
         :root {
-            --primary: #2e7d32; /* Vihreä luonnonmukainen */
-            --secondary: #1565c0; /* Syväsini */
-            --accent: #ff9800; /* Oranssi korostukseen */
-            --dark: #263238; /* Tummanharmaa */
-            --light: #f5f7fa; /* Vaalea tausta */
-            --gray: #607d8b; /* Harmaa teksteihin */
-            --success: #4caf50;
-            --warning: #ffb300;
-            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease;
+            --primary: #2563eb; /* Moderni sininen */
+            --secondary: #7c3aed; /* Violetti */
+            --accent: #f59e0b; /* Kultainen */
+            --dark: #1e293b; /* Tumma siniharmaa */
+            --light: #f8fafc; /* Vaalea tausta */
+            --gray: #64748b; /* Harmaa */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
         }
 
         * {
@@ -48,41 +49,42 @@
 
         h1, h2, h3, h4 {
             font-weight: 600;
-            line-height: 1.3;
+            line-height: 1.2;
             margin-bottom: 1rem;
         }
 
         h1 {
-            font-size: 3.2rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            font-size: 3.5rem;
+            background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
         h2 {
-            font-size: 2.3rem;
+            font-size: 2.5rem;
             position: relative;
             display: inline-block;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             color: var(--dark);
         }
 
         h2::after {
             content: '';
             position: absolute;
-            bottom: -8px;
+            bottom: -12px;
             left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
+            width: 80px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 3px;
         }
 
         p {
             margin-bottom: 1.5rem;
             color: var(--gray);
             font-size: 1.1rem;
+            line-height: 1.7;
         }
 
         a {
@@ -99,24 +101,29 @@
         }
 
         .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
             border: none;
             font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
         }
 
         .btn-primary {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
         }
 
         .btn-outline {
@@ -128,15 +135,16 @@
         .btn-outline:hover {
             background: var(--primary);
             color: white;
+            transform: translateY(-3px);
         }
 
         section {
-            padding: 5rem 0;
+            padding: 6rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
@@ -156,11 +164,11 @@
         /* ===== EDIT BUTTON ===== */
         .edit-btn {
             position: fixed;
-            bottom: 100px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -176,7 +184,7 @@
 
         .edit-btn:hover {
             transform: scale(1.1) rotate(90deg);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
         }
 
         /* ===== EDIT MODAL ===== */
@@ -187,9 +195,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 1001;
             backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .edit-modal.active {
@@ -202,28 +216,28 @@
             background: white;
             width: 90%;
             max-width: 800px;
-            max-height: 80vh;
-            border-radius: 15px;
+            max-height: 85vh;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            animation: modalFadeIn 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        @keyframes modalFadeIn {
+        @keyframes modalSlideIn {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(30px) scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         .modal-header {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             color: white;
-            padding: 1.5rem 2rem;
+            padding: 1.8rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -232,6 +246,7 @@
         .modal-header h3 {
             margin: 0;
             color: white;
+            font-size: 1.4rem;
         }
 
         .close-modal {
@@ -241,22 +256,29 @@
             font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close-modal:hover {
+            background: rgba(255, 255, 255, 0.1);
             transform: rotate(90deg);
         }
 
         .modal-body {
-            padding: 2rem;
+            padding: 2.5rem;
             overflow-y: auto;
-            max-height: calc(80vh - 120px);
+            max-height: calc(85vh - 100px);
         }
 
         .edit-section {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 2px solid #f1f5f9;
         }
 
         .edit-section:last-child {
@@ -267,137 +289,55 @@
 
         .edit-section h4 {
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             color: var(--dark);
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
             font-family: 'Poppins', sans-serif;
             font-size: 1rem;
             transition: var(--transition);
+            background: #f8fafc;
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .form-actions {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #eee;
-        }
-
-        /* ===== GAME SECTION ===== */
-        .game-section {
-            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
-            border-radius: 20px;
-            margin: 2rem;
-            padding: 3rem 0;
-        }
-
-        .game-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-
-        .game-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary);
-        }
-
-        .game-score {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .game-board {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-
-        .card {
-            aspect-ratio: 1;
-            background: var(--primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 2rem;
-            color: white;
-            transform-style: preserve-3d;
-            position: relative;
-        }
-
-        .card.flipped {
-            background: white;
-            color: var(--dark);
-            transform: rotateY(180deg);
-        }
-
-        .card.matched {
-            background: var(--success);
-            cursor: default;
-        }
-
-        .game-controls {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .game-message {
-            text-align: center;
-            margin-top: 1rem;
-            min-height: 30px;
-            font-weight: 500;
-        }
-
-        .game-instructions {
-            background: #f0f7ff;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f1f5f9;
         }
 
         /* ===== HEADER & NAVIGATION ===== */
@@ -409,14 +349,14 @@
             z-index: 1000;
             padding: 1.2rem 0;
             transition: var(--transition);
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
         }
 
         header.scrolled {
             padding: 1rem 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         nav {
@@ -426,41 +366,48 @@
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
             display: flex;
             align-items: center;
+            gap: 0.8rem;
         }
 
-        .logo i {
-            margin-right: 0.5rem;
-            font-size: 1.8rem;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             font-weight: 500;
             position: relative;
             color: var(--dark);
+            font-size: 1rem;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -6px;
             left: 0;
             width: 0;
-            height: 2px;
-            background-color: var(--primary);
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
             transition: var(--transition);
         }
 
@@ -468,50 +415,287 @@
             width: 100%;
         }
 
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--dark);
             cursor: pointer;
+            z-index: 1002;
         }
 
         /* ===== HERO SECTION ===== */
         .hero {
-            height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
-            background: linear-gradient(135deg, #e8f5e9 0%, #bbdefb 100%);
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef7ff 100%);
             overflow: hidden;
         }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232563eb' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
         .hero-content {
-            max-width: 700px;
+            max-width: 800px;
             position: relative;
             z-index: 2;
-            text-align: center;
-            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.2rem;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
             animation: fadeInUp 1s ease;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
             animation: fadeInUp 1s ease 0.2s both;
         }
 
         .hero-btns {
             display: flex;
-            gap: 1rem;
-            justify-content: center;
+            gap: 1.2rem;
             animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(37, 99, 235, 0.1);
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .stat-content h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-content p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .profile-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .profile-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border: 2px solid #f1f5f9;
+        }
+
+        .contact-info h3 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            background: white;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .contact-details p {
+            color: var(--gray);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills {
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef7ff 100%);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 2rem;
+            color: var(--dark);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.8rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .skill-percent {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 5px;
+            background: var(--gradient);
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         /* ===== PROJECTS SECTION ===== */
@@ -522,43 +706,72 @@
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 2.5rem;
         }
 
         .project-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .project-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
+        .project-image {
+            height: 200px;
+            overflow: hidden;
         }
 
-        .project-header i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        .project-header h3 {
-            color: white;
-            margin-bottom: 0.5rem;
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
         }
 
         .project-content {
             padding: 2rem;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .project-title h3 {
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+            font-size: 1.3rem;
+        }
+
+        .project-title p {
+            color: var(--gray);
+            margin: 0;
+            font-size: 0.9rem;
         }
 
         .project-tech {
@@ -569,12 +782,19 @@
         }
 
         .project-tag {
-            background: #e8f5e9;
+            background: #f1f5f9;
             color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .project-features {
@@ -582,24 +802,25 @@
         }
 
         .project-features h4 {
-            color: var(--primary);
+            color: var(--dark);
             margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         .feature-list {
-            list-style-type: none;
-            padding-left: 0;
+            list-style: none;
         }
 
         .feature-list li {
-            margin-bottom: 0.7rem;
-            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            padding-left: 1.8rem;
             position: relative;
+            color: var(--gray);
         }
 
-        .feature-list li:before {
-            content: "✓";
-            color: var(--primary);
+        .feature-list li::before {
+            content: '✓';
+            color: var(--success);
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -608,7 +829,7 @@
         .project-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .project-links a {
@@ -616,276 +837,148 @@
             text-align: center;
         }
 
-        /* ===== GALLERY SECTION ===== */
-        .gallery-section {
-            background: linear-gradient(135deg, #f1f8e9 0%, #e3f2fd 100%);
+        /* ===== GAME SECTION ===== */
+        .game-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef7ff 100%);
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-item {
-            border-radius: 12px;
-            overflow: hidden;
-            height: 220px;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
+        .game-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: white;
+            border-radius: 25px;
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .game-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
+        .game-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
         }
 
-        /* ===== ABOUT SECTION ===== */
-        .about-content {
+        .game-title {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .game-stats {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3.5rem;
-            align-items: start;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .profile-image {
-            width: 100%;
-            height: 380px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .stat-box {
+            background: #f8fafc;
+            padding: 1.2rem;
             border-radius: 15px;
+            text-align: center;
+            border: 2px solid #f1f5f9;
+        }
+
+        .stat-box h4 {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 2.2rem;
             color: white;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .profile-image i {
-            font-size: 7rem;
-            opacity: 0.9;
-        }
-
-        .contact-info {
-            background: white;
-            padding: 1.8rem;
-            border-radius: 12px;
-            margin-top: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .contact-info h3 {
-            color: var(--dark);
-            margin-bottom: 1.2rem;
-            font-size: 1.3rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 0.7rem;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-
-        .contact-info i {
-            color: var(--primary);
-            width: 20px;
-            text-align: center;
-        }
-
-        .note {
-            font-size: 0.85rem;
-            color: #ff6b6b;
-            font-style: italic;
-            margin-top: 0.5rem;
-            padding-left: 1.5rem;
-        }
-
-        .cv-section {
-            background: white;
-            padding: 2.2rem;
-            border-radius: 15px;
-            margin-top: 1.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        .cv-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .cv-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .cv-item h3 {
-            color: var(--primary);
-            margin-bottom: 0.4rem;
-            font-size: 1.2rem;
-        }
-
-        .cv-date {
-            display: inline-block;
-            background: #e8f5e9;
-            color: var(--primary);
-            padding: 0.3rem 0.9rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 0.8rem;
-        }
-
-        .cv-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .cv-list li {
-            margin-bottom: 0.7rem;
-            padding-left: 1.3rem;
             position: relative;
+            transform-style: preserve-3d;
         }
 
-        .cv-list li:before {
-            content: "•";
-            color: var(--primary);
-            font-size: 1.3rem;
+        .card::before {
+            content: '?';
             position: absolute;
-            left: 0;
-            top: -0.3rem;
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .cv-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.9rem 1.8rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: var(--transition);
-            margin-top: 1rem;
-        }
-
-        .cv-download:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .cv-download i {
-            font-size: 1.3rem;
-        }
-
-        /* ===== SKILLS SECTION ===== */
-        .skills {
-            background: linear-gradient(135deg, #f9fbe7 0%, #f3e5f5 100%);
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-        }
-
-        .skill-category h3 {
-            margin-bottom: 1.3rem;
-            color: var(--dark);
-            font-size: 1.3rem;
-        }
-
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .skill-bar {
-            height: 8px;
-            background-color: #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 1.5s ease;
-        }
-
-        /* ===== INTERESTS SECTION ===== */
-        .interests {
-            background: linear-gradient(135deg, #fff3e0 0%, #fce4ec 100%);
-        }
-
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .interest-card {
+        .card.flipped {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+            color: var(--dark);
+            transform: rotateY(180deg);
         }
 
-        .interest-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow);
+        .card.flipped::before {
+            display: none;
         }
 
-        .interest-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+        .card.matched {
+            background: var(--success);
+            cursor: default;
+            transform: scale(0.95);
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: linear-gradient(135deg, var(--dark) 0%, #37474f 100%);
+            background: var(--dark);
             color: white;
-            padding: 3.5rem 0 1.5rem;
+            padding: 4rem 0 2rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-column h3 {
             color: white;
-            margin-bottom: 1.3rem;
-            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-about {
+            max-width: 400px;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
         }
 
         .footer-links {
@@ -893,37 +986,43 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.7rem;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
+            margin-bottom: 0.8rem;
         }
 
-        .footer-links i {
-            color: var(--primary);
-            width: 18px;
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
         .footer-links a:hover {
-            color: #bbdefb;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            width: 20px;
+            color: var(--primary);
         }
 
         .social-links {
             display: flex;
-            gap: 0.8rem;
-            margin-top: 1.3rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            border-radius: 12px;
             transition: var(--transition);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         .social-links a:hover {
@@ -933,38 +1032,17 @@
 
         .copyright {
             text-align: center;
-            padding-top: 1.8rem;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-        }
-
-        /* ===== FINAL NOTE SECTION (After Footer) ===== */
-        .final-note {
-            background: rgba(38, 50, 56, 0.95);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 2rem 0;
-            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .final-note p {
-            margin-bottom: 0.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-        }
-
-        .final-note .copyright-text {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.85rem;
         }
 
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(25px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -972,15 +1050,10 @@
             }
         }
 
-        @keyframes cardFlip {
-            0% { transform: rotateY(0); }
-            100% { transform: rotateY(180deg); }
-        }
-
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .animate-on-scroll.visible {
@@ -991,18 +1064,18 @@
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 992px) {
             h1 {
-                font-size: 2.8rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .hero h1 {
                 font-size: 3rem;
             }
             
-            .about-content, .skills-container, .footer-content, .projects-grid {
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .about-content, .skills-container, .footer-content {
                 grid-template-columns: 1fr;
             }
             
@@ -1010,47 +1083,37 @@
                 text-align: center;
             }
             
-            .hero-btns {
+            .hero-stats {
                 justify-content: center;
             }
             
-            .game-section {
-                margin: 1rem;
-            }
-            
-            .edit-btn {
-                bottom: 90px;
-                right: 15px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
+            .nav-links {
+                gap: 1.5rem;
             }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 65px;
-                left: 0;
-                width: 100%;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
                 background: white;
                 flex-direction: column;
-                align-items: center;
-                padding: 1.5rem;
-                box-shadow: var(--shadow);
-                transform: translateY(-100%);
-                opacity: 0;
+                align-items: flex-start;
+                padding: 6rem 2rem 2rem;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
-                z-index: 999;
+                z-index: 1001;
             }
             
             .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
+                right: 0;
             }
             
             .nav-links li {
-                margin: 0.8rem 0;
+                margin: 0.5rem 0;
             }
             
             .mobile-menu-btn {
@@ -1060,80 +1123,62 @@
             .hero-btns {
                 flex-direction: column;
                 align-items: center;
-                gap: 0.8rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-            
-            section {
-                padding: 3.5rem 0;
-            }
-            
-            .game-board {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
-            }
-            
-            .card {
-                font-size: 1.5rem;
             }
             
             .form-row {
                 grid-template-columns: 1fr;
             }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 0 1.2rem;
-            }
             
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .cv-section {
-                padding: 1.5rem;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
+            section {
+                padding: 4rem 0;
             }
             
             .game-board {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 6px;
+                gap: 8px;
             }
             
             .card {
-                font-size: 1.2rem;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
             }
             
             .game-container {
-                padding: 1.5rem;
+                padding: 2rem;
             }
             
             .modal-body {
                 padding: 1.5rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1148,7 +1193,7 @@
     <div class="edit-modal" id="editModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><i class="fas fa-edit"></i> Muokkaa Sivuston Tietoja</h3>
+                <h3><i class="fas fa-edit"></i> Muokkaa Portfolioa</h3>
                 <button class="close-modal" id="closeModal">
                     <i class="fas fa-times"></i>
                 </button>
@@ -1186,23 +1231,6 @@
                     </div>
                 </div>
 
-                <!-- Work Experience Edit -->
-                <div class="edit-section">
-                    <h4><i class="fas fa-briefcase"></i> Työkokemus</h4>
-                    <div class="form-group">
-                        <label for="workTitle">Työnimike</label>
-                        <input type="text" id="workTitle" class="form-control" value="Voimistelijanvalmentaja">
-                    </div>
-                    <div class="form-group">
-                        <label for="workPeriod">Aikajakso</label>
-                        <input type="text" id="workPeriod" class="form-control" value="1.1.2020 - Nykyhetki">
-                    </div>
-                    <div class="form-group">
-                        <label for="workDescription">Kuvaus (erota pisteillä)</label>
-                        <textarea id="workDescription" class="form-control" rows="3">Valmennan 8-12-vuotiaiden aloittelevaa kilparyhmää. Kokemusta erilaisista ikäryhmistä ja tasoista. Opetan tekniikkaa, turvallisuutta ja harjoittelumenetelmiä.</textarea>
-                    </div>
-                </div>
-
                 <!-- Skills Edit -->
                 <div class="edit-section">
                     <h4><i class="fas fa-chart-bar"></i> Taidot</h4>
@@ -1226,26 +1254,6 @@
                             <input type="text" id="skill4" class="form-control" value="Office-ohjelmistot:90">
                         </div>
                     </div>
-                    <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.5rem;">
-                        <i class="fas fa-info-circle"></i> Muoto: "Taidon nimi:prosentti" (esim. "HTML:95")
-                    </p>
-                </div>
-
-                <!-- Projects Edit -->
-                <div class="edit-section">
-                    <h4><i class="fas fa-project-diagram"></i> Projektit</h4>
-                    <div class="form-group">
-                        <label for="projectTitle2">Projektin nimi (Portfolio)</label>
-                        <input type="text" id="projectTitle2" class="form-control" value="Moderni Portfolio Sivusto">
-                    </div>
-                    <div class="form-group">
-                        <label for="projectDescription2">Portfolio-sivuston kuvaus</label>
-                        <textarea id="projectDescription2" class="form-control" rows="3">Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, interaktiivisen pelin, kuvagallerian ja dynaamisen muokkausominaisuuden.</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="projectTags2">Portfolio teknologiat</label>
-                        <input type="text" id="projectTags2" class="form-control" value="HTML5, CSS3, JavaScript, Responsive Design, Interactive Elements">
-                    </div>
                 </div>
 
                 <div class="form-actions">
@@ -1265,7 +1273,9 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo">
-                    <i class="fas fa-user-circle"></i>
+                    <div class="logo-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
                     <span>Elmo Ahonen</span>
                 </a>
                 
@@ -1274,13 +1284,11 @@
                 </button>
                 
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Koti</a></li>
-                    <li><a href="#about">Minusta & CV</a></li>
+                    <li><a href="#home" class="active">Koti</a></li>
+                    <li><a href="#about">Minusta</a></li>
                     <li><a href="#skills">Taidot</a></li>
                     <li><a href="#projects">Projektit</a></li>
                     <li><a href="#game">Peli</a></li>
-                    <li><a href="#gallery">Galleria</a></li>
-                    <li><a href="#interests">Harrastukset</a></li>
                     <li><a href="#contact">Yhteys</a></li>
                 </ul>
             </nav>
@@ -1294,101 +1302,100 @@
                 <h1 id="heroTitle">Hei, olen <span class="highlight">Elmo Ahonen</span></h1>
                 <p id="heroDescription">Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.</p>
                 <div class="hero-btns">
-                    <a href="#about" class="btn btn-primary">Tutustu CV:hen</a>
-                    <a href="#game" class="btn btn-outline">Kokeile Pelii</a>
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-laptop-code"></i> Katso Projektini
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i> Ota Yhteyttä
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="projectCount">2+</h3>
+                            <p>Projektia</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="experienceYears">5+</h3>
+                            <p>Vuotta kokemusta</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="skillCount">8+</h3>
+                            <p>Taitoa</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="animate-on-scroll">
+    <section id="about" class="about animate-on-scroll">
         <div class="container">
             <div class="section-title">
-                <h2>Minusta & CV</h2>
-                <p>Lyhyt esittely taustastani ja työkokemuksestani</p>
+                <h2>Minusta</h2>
+                <p>Tutustu taustaan ja tavoitteisiini</p>
             </div>
             
             <div class="about-content">
                 <div class="about-text">
                     <h3>Opiskelija ja Valmentaja</h3>
-                    <p>Hei! Olen Elmo Ahonen, tieto- ja viestintätekniikan opiskelija sekä kokeneempi voimisteluvalmentaja. Yhdistän teknologian osaamista ja liikunnan intohimoa kaikessa mitä teen.</p>
+                    <p>Hei! Olen Elmo Ahonen, 17-vuotias tieto- ja viestintätekniikan opiskelija Oulusta. Yhdistän teknologian osaamista ja liikunnan intohimoa kaikessa mitä teen.</p>
                     
-                    <div class="cv-section">
-                        <h3 style="color: var(--dark); margin-bottom: 1.8rem;">Työkokemus & Koulutus</h3>
-                        
-                        <div class="cv-item">
-                            <span class="cv-date" id="workPeriodDisplay">1.1.2020 - Nykyhetki</span>
-                            <h3 id="workTitleDisplay">Voimistelijanvalmentaja</h3>
-                            <ul class="cv-list" id="workDescriptionDisplay">
-                                <li>Valmennan 8-12-vuotiaiden aloittelevaa kilparyhmää</li>
-                                <li>Kokemusta erilaisista ikäryhmistä ja tasoista</li>
-                                <li>Opetan tekniikkaa, turvallisuutta ja harjoittelumenetelmiä</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="cv-item">
-                            <span class="cv-date">8.2025 - Nykyhetki</span>
-                            <h3>Tieto- ja viestintätekniikan opiskelija</h3>
-                            <ul class="cv-list">
-                                <li>Ohjelmoinnin ja web-kehityksen perusteet</li>
-                                <li>Tietoverkot ja tietotekniikka</li>
-                                <li>Digitaitojen syventäminen</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="cv-item">
-                            <span class="cv-date">8.2021 - 6.2025</span>
-                            <h3>Pohjankartanon yläaste</h3>
-                            <ul class="cv-list">
-                                <li>Perusopetuksen suoritus</li>
-                                <li>Valinnaisaineina liikunta ja tietotekniikka</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="cv-item">
-                            <h3>Kehittyneet taidot</h3>
-                            <ul class="cv-list">
-                                <li>Vastuullisuus ja luotettavuus työtehtävissä</li>
-                                <li>Lasten ja nuorten ohjaus ja motivointi</li>
-                                <li>Kärsivällisyys ja kannustava asenne</li>
-                                <li>Suomen ja englannin kielitaito</li>
-                                <li>7 vuoden kokemus uimahypyistä</li>
-                                <li>Tietokoneiden ja ohjelmistojen käyttö</li>
-                            </ul>
-                        </div>
-                        
-                        <!-- CV Download Link -->
-                        <a href="CV.pdf" class="cv-download" download>
-                            <i class="fas fa-download"></i>
-                            <div>
-                                <strong>Lataa CV PDF-muodossa</strong>
-                                <p style="margin: 0; font-size: 0.85rem; opacity: 0.9;">Klikkaa ladataksesi täydellinen ansioluettelo</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="about-image">
-                    <div class="profile-image">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
+                    <p>Olen aina ollut kiinnostunut teknologiasta ja sen mahdollisuuksista. Tietokoneiden parissa vietetty aika ja ohjelmointi kiehtovat minua, ja haluan kehittää taitoja niin paljon kuin mahdollista.</p>
+                    
+                    <p>Voimistelun parissa olen toiminut vuodesta 2020 lähtien, ja se on opettanut minulle tärkeitä taitoja kuten kärsivällisyyttä, johdonantoa ja tiimityötä.</p>
                     
                     <div class="contact-info">
                         <h3>Yhteystiedot</h3>
-                        <p>
-                            <i class="fas fa-envelope"></i>
-                            <span id="emailDisplay">elmonster7400@gmail.com</span>
-                        </p>
-                        <p>
-                            <i class="fas fa-phone"></i>
-                            <span id="phoneDisplay">+358 40 123 4567</span>
-                        </p>
-                        <p class="note">Huom: Puhelinnumero on esimerkki, eikä ole todellinen.</p>
-                        <p>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span id="locationDisplay">Oulu, Suomi</span>
-                        </p>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Sähköposti</h4>
+                                <p id="emailDisplay">elmonster7400@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Sijainti</h4>
+                                <p id="locationDisplay">Oulu, Suomi</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Status</h4>
+                                <p>Tieto- ja viestintätekniikan opiskelija</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-image">
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elmo Ahonen">
+                    <div class="profile-badge">
+                        <i class="fas fa-medal"></i> Aktiivinen opiskelija
                     </div>
                 </div>
             </div>
@@ -1405,12 +1412,12 @@
             
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3>Tekniset taidot</h3>
+                    <h3><i class="fas fa-laptop-code"></i> Tekniset taidot</h3>
                     
                     <div class="skill-item" id="skillItem1">
-                        <div class="skill-info">
-                            <span id="skillName1">Ohjelmoinnin perusteet</span>
-                            <span id="skillPercent1">85%</span>
+                        <div class="skill-header">
+                            <span class="skill-name" id="skillName1">Ohjelmoinnin perusteet</span>
+                            <span class="skill-percent" id="skillPercent1">85%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="85"></div>
@@ -1418,9 +1425,9 @@
                     </div>
                     
                     <div class="skill-item" id="skillItem2">
-                        <div class="skill-info">
-                            <span id="skillName2">Web-kehitys</span>
-                            <span id="skillPercent2">80%</span>
+                        <div class="skill-header">
+                            <span class="skill-name" id="skillName2">Web-kehitys</span>
+                            <span class="skill-percent" id="skillPercent2">80%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="80"></div>
@@ -1428,9 +1435,9 @@
                     </div>
                     
                     <div class="skill-item" id="skillItem3">
-                        <div class="skill-info">
-                            <span id="skillName3">Tietokoneiden käyttö</span>
-                            <span id="skillPercent3">95%</span>
+                        <div class="skill-header">
+                            <span class="skill-name" id="skillName3">Tietokoneiden käyttö</span>
+                            <span class="skill-percent" id="skillPercent3">95%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="95"></div>
@@ -1438,9 +1445,9 @@
                     </div>
                     
                     <div class="skill-item" id="skillItem4">
-                        <div class="skill-info">
-                            <span id="skillName4">Office-ohjelmistot</span>
-                            <span id="skillPercent4">90%</span>
+                        <div class="skill-header">
+                            <span class="skill-name" id="skillName4">Office-ohjelmistot</span>
+                            <span class="skill-percent" id="skillPercent4">90%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="90"></div>
@@ -1449,12 +1456,12 @@
                 </div>
                 
                 <div class="skill-category">
-                    <h3>Henkilökohtaiset taidot</h3>
+                    <h3><i class="fas fa-users"></i> Henkilökohtaiset taidot</h3>
                     
                     <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Johtaminen</span>
-                            <span>88%</span>
+                        <div class="skill-header">
+                            <span class="skill-name">Johtaminen</span>
+                            <span class="skill-percent">88%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="88"></div>
@@ -1462,9 +1469,9 @@
                     </div>
                     
                     <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Ryhmätyö</span>
-                            <span>92%</span>
+                        <div class="skill-header">
+                            <span class="skill-name">Ryhmätyö</span>
+                            <span class="skill-percent">92%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="92"></div>
@@ -1472,9 +1479,9 @@
                     </div>
                     
                     <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Ongelmanratkaisu</span>
-                            <span>85%</span>
+                        <div class="skill-header">
+                            <span class="skill-name">Ongelmanratkaisu</span>
+                            <span class="skill-percent">85%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="85"></div>
@@ -1482,9 +1489,9 @@
                     </div>
                     
                     <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Kielitaito</span>
-                            <span>90%</span>
+                        <div class="skill-header">
+                            <span class="skill-name">Kielitaito</span>
+                            <span class="skill-percent">90%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="90"></div>
@@ -1506,38 +1513,43 @@
             <div class="projects-grid">
                 <!-- Portfolio Website Project -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-laptop-code"></i>
-                        <h3 id="projectTitleDisplay2">Moderni Portfolio Sivusto</h3>
-                        <p>Interaktiivinen henkilökohtainen sivusto</p>
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Portfolio Sivusto">
                     </div>
                     <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="project-title">
+                                <h3 id="projectTitleDisplay2">Moderni Portfolio Sivusto</h3>
+                                <p>Interaktiivinen henkilökohtainen sivusto</p>
+                            </div>
+                        </div>
+                        
                         <p id="projectDescriptionDisplay2">Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, interaktiivisen pelin, kuvagallerian ja dynaamisen muokkausominaisuuden.</p>
                         
                         <div class="project-tech" id="projectTagsDisplay2">
                             <span class="project-tag">HTML5</span>
                             <span class="project-tag">CSS3</span>
                             <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">Responsive Design</span>
-                            <span class="project-tag">Interactive Elements</span>
+                            <span class="project-tag">Responsive</span>
+                            <span class="project-tag">Interactive</span>
                         </div>
                         
                         <div class="project-features">
                             <h4>Pääominaisuudet:</h4>
                             <ul class="feature-list">
-                                <li>Responsiivinen design kaikille näytönkoille</li>
-                                <li>Interaktiivinen muistipeli JavaScriptillä</li>
+                                <li>Responsiivinen design kaikille laitteille</li>
+                                <li>Interaktiivinen muistipeli</li>
                                 <li>Reaaliaikainen sisällön muokkaus</li>
                                 <li>Animoitu scrollaus ja hover-efektit</li>
-                                <li>Kuvagalleria ja henkilökohtainen CV</li>
-                                <li>Dynaamiset taitopalkit ja progress barit</li>
-                                <li>Mobile-first -suunnittelu</li>
                             </ul>
                         </div>
                         
                         <div class="project-links">
                             <a href="#home" class="btn btn-primary">
-                                <i class="fas fa-eye"></i> Esikatsele Sivustoa
+                                <i class="fas fa-eye"></i> Esikatsele
                             </a>
                             <a href="https://github.com/ELmonsterr" target="_blank" class="btn btn-outline">
                                 <i class="fab fa-github"></i> GitHub
@@ -1548,12 +1560,20 @@
                 
                 <!-- Calculator Project -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-calculator"></i>
-                        <h3 id="projectTitleDisplay">Yksinkertainen Laskinsovellus</h3>
-                        <p>Ensimmäinen web-sovellus</p>
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Laskinsovellus">
                     </div>
                     <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="project-title">
+                                <h3 id="projectTitleDisplay">Yksinkertainen Laskinsovellus</h3>
+                                <p>Ensimmäinen web-sovellus</p>
+                            </div>
+                        </div>
+                        
                         <p id="projectDescriptionDisplay">Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.</p>
                         
                         <div class="project-tech" id="projectTagsDisplay">
@@ -1567,10 +1587,8 @@
                             <h4>Ominaisuudet:</h4>
                             <ul class="feature-list">
                                 <li>Peruslaskutoimitukset (+, -, ×, ÷)</li>
-                                <li>Responsiivinen design mobiililaitteille</li>
-                                <li>Virheenkäsittely ja käyttäjäystävällisyys</li>
-                                <li>Näppäimistön ja hiiren tuki</li>
-                                <li>Selkeä ja intuitiivinen käyttöliittymä</li>
+                                <li>Responsiivinen design</li>
+                                <li>Virheenkäsittely</li>
                                 <li>Historia-toiminto</li>
                             </ul>
                         </div>
@@ -1586,36 +1604,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Future Projects Section -->
-            <div class="section-title" style="margin-top: 4rem;">
-                <h2>Tulevat Projektit</h2>
-                <p>Ideat ja suunnitelmat kehitystyöhön</p>
-            </div>
-            
-            <div class="projects-content">
-                <div class="projects-icon">
-                    <i class="fas fa-lightbulb"></i>
-                </div>
-                <h3>Projektit kehityksessä</h3>
-                <p>Opiskeluni aikana olen keskittynyt perusasioiden oppimiseen, ja olen innokas aloittamaan uusia projekteja. Alla on suunnitelmia tuleville projekteille:</p>
-                
-                <div class="upcoming-projects">
-                    <h4><i class="fas fa-list-check"></i> Tulevat ideat</h4>
-                    <ul>
-                        <li>Voimisteluseuran verkkosivuston päivitys</li>
-                        <li>Yksinkertainen mobiilisovellus treeniohjelmien seuraamiseen</li>
-                        <li>Kotisivujen luonti pienille yrityksille</li>
-                        <li>Python-ohjelma matematiikan harjoitteluun</li>
-                        <li>React-pohjainen sääsovellus</li>
-                        <li>JavaScript-peli (platformer tai puzzle)</li>
-                    </ul>
-                </div>
-                
-                <p style="margin-top: 1.5rem; font-style: italic;">
-                    "Pienet askeleet johtavat suuriin saavutuksiin"
-                </p>
-            </div>
         </div>
     </section>
 
@@ -1624,17 +1612,28 @@
         <div class="container">
             <div class="section-title">
                 <h2>Muistipeli</h2>
-                <p>Testaa muistiasi tällä yksinkertaisella pelillä</p>
+                <p>Testaa muistiasi tällä hauskalla pelillä!</p>
             </div>
             
             <div class="game-container">
-                <div class="game-title">
-                    <h3>Muistipari</h3>
+                <div class="game-header">
+                    <h3 class="game-title">Muistipari</h3>
+                    <p>Löydä kaikki parit mahdollisimman vähillä siirroilla</p>
                 </div>
                 
-                <div class="game-score">
-                    <div>Pisteet: <span id="score">0</span></div>
-                    <div>Siirrot: <span id="moves">0</span></div>
+                <div class="game-stats">
+                    <div class="stat-box">
+                        <h4>Pisteet</h4>
+                        <p id="score">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Siirrot</h4>
+                        <p id="moves">0</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Parit</h4>
+                        <p id="pairs">0/8</p>
+                    </div>
                 </div>
                 
                 <div class="game-board" id="gameBoard">
@@ -1642,7 +1641,7 @@
                 </div>
                 
                 <div class="game-message" id="gameMessage">
-                    Löydä kaikki parit!
+                    Klikkaa kortteja löytääksesi parit!
                 </div>
                 
                 <div class="game-controls">
@@ -1650,79 +1649,8 @@
                         <i class="fas fa-redo"></i> Aloita Alusta
                     </button>
                     <button id="hintBtn" class="btn btn-outline">
-                        <i class="fas fa-lightbulb"></i> Vihje
+                        <i class="fas fa-lightbulb"></i> Vihje (-5 pistettä)
                     </button>
-                </div>
-                
-                <div class="game-instructions">
-                    <p><strong>Ohjeet:</strong> Klikkaa kortteja löytääksesi samanlaiset parit. Löydä kaikki 8 paria mahdollisimman vähillä siirroilla!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section animate-on-scroll">
-        <div class="container">
-            <div class="section-title">
-                <h2>Kuvagalleria</h2>
-                <p>Inspiraatiota ja kiinnostuksen kohteitani</p>
-            </div>
-            
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Teknologia ja Koodaus">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Voimistelu ja Liikunta">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Strategiapelit">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gaming Setup">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ohjelmointi Tila">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tiimityö ja eSports">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interests Section -->
-    <section id="interests" class="interests animate-on-scroll">
-        <div class="container">
-            <div class="section-title">
-                <h2>Harrastukset ja Kiinnostuksenkohteet</h2>
-                <p>Mikä minut liikuttaa vapaa-ajallani</p>
-            </div>
-            
-            <div class="interests-grid">
-                <div class="interest-card">
-                    <i class="fas fa-laptop-code"></i>
-                    <h4>Ohjelmointi</h4>
-                    <p>HTML, CSS, JavaScript ja Python kiehtovat minua. Rakastan luoda ja ratkaista ongelmia koodin avulla.</p>
-                </div>
-                
-                <div class="interest-card">
-                    <i class="fas fa-dumbbell"></i>
-                    <h4>Voimistelu</h4>
-                    <p>7 vuoden kokemus uimahypyistä ja aktiivinen valmentaminen. Liikunta on osa elämäntapaani.</p>
-                </div>
-                
-                <div class="interest-card">
-                    <i class="fas fa-gamepad"></i>
-                    <h4>Videopelit</h4>
-                    <p>Strategiapelit ja pulmapelit kiinnostavat erityisesti. Haluaisin joskus kehittää oman pelin.</p>
-                </div>
-                
-                <div class="interest-card">
-                    <i class="fas fa-music"></i>
-                    <h4>Musiikki</h4>
-                    <p>Kuuntelen monenlaista musiikkia ja olen kiinnostunut äänituotannosta ja musiikin teknisistä puolista.</p>
                 </div>
             </div>
         </div>
@@ -1732,9 +1660,9 @@
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
+                <div class="footer-column footer-about">
                     <h3>Elmo Ahonen</h3>
-                    <p>Tieto- ja viestintätekniikan opiskelija ja kokeneempi voimisteluvalmentaja. Aion kehittää taitoja sekä teknologian että liikunnan aloilla.</p>
+                    <p>Tieto- ja viestintätekniikan opiskelija ja kokeneempi voimisteluvalmentaja Oulusta. Aion kehittää taitoja sekä teknologian että liikunnan aloilla.</p>
                     <div class="social-links">
                         <a href="https://github.com/ELmonsterr" target="_blank" title="GitHub">
                             <i class="fab fa-github"></i>
@@ -1746,10 +1674,10 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Navigointi</h3>
+                    <h3>Linkit</h3>
                     <ul class="footer-links">
                         <li><a href="#home"><i class="fas fa-chevron-right"></i> Koti</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Minusta & CV</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Minusta</a></li>
                         <li><a href="#skills"><i class="fas fa-chevron-right"></i> Taidot</a></li>
                         <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projektit</a></li>
                         <li><a href="#game"><i class="fas fa-chevron-right"></i> Peli</a></li>
@@ -1757,43 +1685,27 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Osaamisalueet</h3>
+                    <h3>Ota Yhteyttä</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-check"></i> Ohjelmoinnin perusteet</li>
-                        <li><i class="fas fa-check"></i> Web-kehitys</li>
-                        <li><i class="fas fa-check"></i> Valmennus</li>
-                        <li><i class="fas fa-check"></i> Tietotekniikka</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Yhteystiedot</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> <span id="footerEmail">elmonster7400@gmail.com</span></li>
-                        <li><i class="fas fa-map-marker-alt"></i> <span id="footerLocation">Oulu, Suomi</span></li>
+                        <li><a href="mailto:elmonster7400@gmail.com"><i class="fas fa-envelope"></i> elmonster7400@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Oulu, Suomi</a></li>
+                        <li><a href="https://github.com/ELmonsterr" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2026 Elmo Ahonen. Kaikki oikeudet pidätetään.</p>
+                <p>&copy; 2025 Elmo Ahonen. Kaikki oikeudet pidätetään.</p>
             </div>
         </div>
     </footer>
-
-    <!-- FINAL NOTE SECTION - After Footer -->
-    <div class="final-note">
-        <div class="container">
-            <p>Tämä sivusto on luotu tekoälyn avustuksella oppimisen ja esittelyn vuoksi.</p>
-            <p class="copyright-text">Sivusto päivitetty viimeksi: Joulukuu 2025</p>
-        </div>
-    </div>
 
     <!-- JavaScript -->
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-links a');
         
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -1803,10 +1715,14 @@
         });
         
         // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                
+                // Update active state
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
             });
         });
         
@@ -1819,7 +1735,30 @@
             } else {
                 header.classList.remove('scrolled');
             }
+            
+            // Update active nav item based on scroll position
+            updateActiveNav();
         });
+        
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section');
+            const scrollPos = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === `#${sectionId}`) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
         
         // Animate elements on scroll
         const animateOnScroll = () => {
@@ -1870,15 +1809,14 @@
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    e.preventDefault();
                     window.scrollTo({
-                        top: targetElement.offsetTop - 70,
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
@@ -1902,71 +1840,42 @@
             heroTitle: "Hei, olen <span class='highlight'>Elmo Ahonen</span>",
             heroDescription: "Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.",
             email: "elmonster7400@gmail.com",
-            phone: "+358 40 123 4567",
             location: "Oulu, Suomi",
-            workTitle: "Voimistelijanvalmentaja",
-            workPeriod: "1.1.2020 - Nykyhetki",
-            workDescription: "Valmennan 8-12-vuotiaiden aloittelevaa kilparyhmää. Kokemusta erilaisista ikäryhmistä ja tasoista. Opetan tekniikkaa, turvallisuutta ja harjoittelumenetelmiä.",
             skill1: "Ohjelmoinnin perusteet:85",
             skill2: "Web-kehitys:80",
             skill3: "Tietokoneiden käyttö:95",
-            skill4: "Office-ohjelmistot:90",
-            projectTitle: "Yksinkertainen Laskinsovellus",
-            projectDescription: "Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.",
-            projectTags: "HTML, CSS, JavaScript, Web Development",
-            projectTitle2: "Moderni Portfolio Sivusto",
-            projectDescription2: "Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, interaktiivisen pelin, kuvagallerian ja dynaamisen muokkausominaisuuden.",
-            projectTags2: "HTML5, CSS3, JavaScript, Responsive Design, Interactive Elements"
+            skill4: "Office-ohjelmistot:90"
         };
 
         // Open modal
         editBtn.addEventListener('click', () => {
             editModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
             // Load current values into form
             document.getElementById('heroTitle').value = document.getElementById('heroTitle').textContent;
             document.getElementById('heroDescription').value = document.getElementById('heroDescription').textContent;
             document.getElementById('email').value = document.getElementById('emailDisplay').textContent;
-            document.getElementById('phone').value = document.getElementById('phoneDisplay').textContent;
             document.getElementById('location').value = document.getElementById('locationDisplay').textContent;
-            document.getElementById('workTitle').value = document.getElementById('workTitleDisplay').textContent;
-            document.getElementById('workPeriod').value = document.getElementById('workPeriodDisplay').textContent;
-            
-            // Load work description from list items
-            const workItems = document.querySelectorAll('#workDescriptionDisplay li');
-            const workDescArray = Array.from(workItems).map(li => li.textContent);
-            document.getElementById('workDescription').value = workDescArray.join('. ');
             
             // Load skills
             document.getElementById('skill1').value = `${document.getElementById('skillName1').textContent}:${document.getElementById('skillPercent1').textContent.replace('%', '')}`;
             document.getElementById('skill2').value = `${document.getElementById('skillName2').textContent}:${document.getElementById('skillPercent2').textContent.replace('%', '')}`;
             document.getElementById('skill3').value = `${document.getElementById('skillName3').textContent}:${document.getElementById('skillPercent3').textContent.replace('%', '')}`;
             document.getElementById('skill4').value = `${document.getElementById('skillName4').textContent}:${document.getElementById('skillPercent4').textContent.replace('%', '')}`;
-            
-            // Load projects
-            document.getElementById('projectTitle').value = document.getElementById('projectTitleDisplay').textContent;
-            document.getElementById('projectDescription').value = document.getElementById('projectDescriptionDisplay').textContent;
-            document.getElementById('projectTitle2').value = document.getElementById('projectTitleDisplay2').textContent;
-            document.getElementById('projectDescription2').value = document.getElementById('projectDescriptionDisplay2').textContent;
-            
-            // Load project tags
-            const tagElements = document.querySelectorAll('#projectTagsDisplay .project-tag');
-            const tagArray = Array.from(tagElements).map(tag => tag.textContent);
-            document.getElementById('projectTags').value = tagArray.join(', ');
-            
-            const tagElements2 = document.querySelectorAll('#projectTagsDisplay2 .project-tag');
-            const tagArray2 = Array.from(tagElements2).map(tag => tag.textContent);
-            document.getElementById('projectTags2').value = tagArray2.join(', ');
         });
 
         // Close modal
         closeModal.addEventListener('click', () => {
             editModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         });
 
         // Close modal when clicking outside
         editModal.addEventListener('click', (e) => {
             if (e.target === editModal) {
                 editModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
             }
         });
 
@@ -1978,26 +1887,7 @@
             
             // Update personal info
             document.getElementById('emailDisplay').textContent = document.getElementById('email').value;
-            document.getElementById('phoneDisplay').textContent = document.getElementById('phone').value;
             document.getElementById('locationDisplay').textContent = document.getElementById('location').value;
-            document.getElementById('footerEmail').textContent = document.getElementById('email').value;
-            document.getElementById('footerLocation').textContent = document.getElementById('location').value;
-            
-            // Update work experience
-            document.getElementById('workTitleDisplay').textContent = document.getElementById('workTitle').value;
-            document.getElementById('workPeriodDisplay').textContent = document.getElementById('workPeriod').value;
-            
-            // Update work description list
-            const workDescriptionList = document.getElementById('workDescriptionDisplay');
-            workDescriptionList.innerHTML = '';
-            const workDescriptions = document.getElementById('workDescription').value.split('. ');
-            workDescriptions.forEach(desc => {
-                if (desc.trim()) {
-                    const li = document.createElement('li');
-                    li.textContent = desc.trim();
-                    workDescriptionList.appendChild(li);
-                }
-            });
             
             // Update skills
             const updateSkill = (skillNum, inputId) => {
@@ -2017,32 +1907,9 @@
             updateSkill(3, 'skill3');
             updateSkill(4, 'skill4');
             
-            // Update projects
-            document.getElementById('projectTitleDisplay').textContent = document.getElementById('projectTitle').value;
-            document.getElementById('projectDescriptionDisplay').textContent = document.getElementById('projectDescription').value;
-            document.getElementById('projectTitleDisplay2').textContent = document.getElementById('projectTitle2').value;
-            document.getElementById('projectDescriptionDisplay2').textContent = document.getElementById('projectDescription2').value;
-            
-            // Update project tags
-            const updateProjectTags = (containerId, tagsInputId) => {
-                const projectTagsContainer = document.getElementById(containerId);
-                projectTagsContainer.innerHTML = '';
-                const tags = document.getElementById(tagsInputId).value.split(',');
-                tags.forEach(tag => {
-                    if (tag.trim()) {
-                        const span = document.createElement('span');
-                        span.className = 'project-tag';
-                        span.textContent = tag.trim();
-                        projectTagsContainer.appendChild(span);
-                    }
-                });
-            };
-            
-            updateProjectTags('projectTagsDisplay', 'projectTags');
-            updateProjectTags('projectTagsDisplay2', 'projectTags2');
-            
             // Close modal and show success message
             editModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
             showNotification('Muutokset tallennettu onnistuneesti!');
         });
 
@@ -2052,21 +1919,11 @@
                 document.getElementById('heroTitle').value = defaultValues.heroTitle.replace("<span class='highlight'>", "").replace("</span>", "");
                 document.getElementById('heroDescription').value = defaultValues.heroDescription;
                 document.getElementById('email').value = defaultValues.email;
-                document.getElementById('phone').value = defaultValues.phone;
                 document.getElementById('location').value = defaultValues.location;
-                document.getElementById('workTitle').value = defaultValues.workTitle;
-                document.getElementById('workPeriod').value = defaultValues.workPeriod;
-                document.getElementById('workDescription').value = defaultValues.workDescription;
                 document.getElementById('skill1').value = defaultValues.skill1;
                 document.getElementById('skill2').value = defaultValues.skill2;
                 document.getElementById('skill3').value = defaultValues.skill3;
                 document.getElementById('skill4').value = defaultValues.skill4;
-                document.getElementById('projectTitle').value = defaultValues.projectTitle;
-                document.getElementById('projectDescription').value = defaultValues.projectDescription;
-                document.getElementById('projectTags').value = defaultValues.projectTags;
-                document.getElementById('projectTitle2').value = defaultValues.projectTitle2;
-                document.getElementById('projectDescription2').value = defaultValues.projectDescription2;
-                document.getElementById('projectTags2').value = defaultValues.projectTags2;
                 
                 showNotification('Oletusarvot palautettu!');
             }
@@ -2077,28 +1934,30 @@
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(90deg, var(--primary), var(--secondary));
+                top: 30px;
+                right: 30px;
+                background: var(--gradient);
                 color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 8px;
+                padding: 1.2rem 1.8rem;
+                border-radius: 12px;
                 box-shadow: var(--shadow);
                 z-index: 1002;
-                animation: slideIn 0.3s ease;
+                animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                max-width: 350px;
             `;
             
             notification.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fas fa-check-circle"></i>
-                    <span>${message}</span>
-                </div>
+                <i class="fas fa-check-circle" style="font-size: 1.3rem;"></i>
+                <span>${message}</span>
             `;
             
             document.body.appendChild(notification);
             
             setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
+                notification.style.animation = 'slideOutRight 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                 setTimeout(() => {
                     document.body.removeChild(notification);
                 }, 300);
@@ -2108,7 +1967,7 @@
         // Add CSS for animations
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes slideIn {
+            @keyframes slideInRight {
                 from {
                     transform: translateX(100%);
                     opacity: 0;
@@ -2119,7 +1978,7 @@
                 }
             }
             
-            @keyframes slideOut {
+            @keyframes slideOutRight {
                 from {
                     transform: translateX(0);
                     opacity: 1;
@@ -2135,19 +1994,21 @@
         // ===== MEMORY GAME =====
         class MemoryGame {
             constructor() {
-                this.cards = ['🎮', '💻', '⚽', '🎵', '📱', '🎯', '🎨', '🚀', '🎮', '💻', '⚽', '🎵', '📱', '🎯', '🎨', '🚀'];
+                this.cards = ['💻', '🎮', '⚽', '🎵', '📱', '🎯', '🎨', '🚀', '💻', '🎮', '⚽', '🎵', '📱', '🎯', '🎨', '🚀'];
                 this.gameBoard = document.getElementById('gameBoard');
                 this.scoreElement = document.getElementById('score');
                 this.movesElement = document.getElementById('moves');
+                this.pairsElement = document.getElementById('pairs');
                 this.messageElement = document.getElementById('gameMessage');
                 this.resetBtn = document.getElementById('resetBtn');
                 this.hintBtn = document.getElementById('hintBtn');
                 
                 this.score = 0;
                 this.moves = 0;
-                this.flippedCards = [];
                 this.matchedPairs = 0;
+                this.flippedCards = [];
                 this.canFlip = true;
+                this.gameStarted = false;
                 
                 this.init();
             }
@@ -2156,7 +2017,7 @@
                 this.shuffleCards();
                 this.createBoard();
                 this.setupEventListeners();
-                this.updateScore();
+                this.updateDisplay();
             }
             
             shuffleCards() {
@@ -2173,17 +2034,14 @@
                     cardElement.className = 'card';
                     cardElement.dataset.index = index;
                     cardElement.dataset.value = card;
-                    cardElement.textContent = '?';
                     this.gameBoard.appendChild(cardElement);
                 });
             }
             
             setupEventListeners() {
                 this.gameBoard.addEventListener('click', (e) => {
-                    if (!e.target.classList.contains('card') || !this.canFlip) return;
-                    
-                    const card = e.target;
-                    if (card.classList.contains('flipped') || card.classList.contains('matched')) return;
+                    const card = e.target.closest('.card');
+                    if (!card || !this.canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) return;
                     
                     this.flipCard(card);
                 });
@@ -2193,17 +2051,23 @@
             }
             
             flipCard(card) {
+                if (!this.gameStarted) {
+                    this.gameStarted = true;
+                    this.messageElement.textContent = 'Hyvä! Löydä vielä toinen kortti!';
+                }
+                
                 card.classList.add('flipped');
                 card.textContent = card.dataset.value;
-                
                 this.flippedCards.push(card);
                 
                 if (this.flippedCards.length === 2) {
                     this.moves++;
-                    this.movesElement.textContent = this.moves;
                     this.canFlip = false;
+                    this.updateDisplay();
                     
-                    setTimeout(() => this.checkMatch(), 600);
+                    setTimeout(() => this.checkMatch(), 800);
+                } else {
+                    this.messageElement.textContent = 'Löydä toinen kortti!';
                 }
             }
             
@@ -2213,11 +2077,11 @@
                 if (card1.dataset.value === card2.dataset.value) {
                     card1.classList.add('matched');
                     card2.classList.add('matched');
-                    this.score += 10;
+                    this.score += 20;
                     this.matchedPairs++;
                     
-                    this.messageElement.textContent = 'Hyvä! Löysit parin!';
-                    this.messageElement.style.color = '#4caf50';
+                    this.messageElement.textContent = 'Mahtavaa! Löysit parin!';
+                    this.messageElement.style.color = '#10b981';
                     
                     if (this.matchedPairs === 8) {
                         this.endGame();
@@ -2225,51 +2089,56 @@
                 } else {
                     card1.classList.remove('flipped');
                     card2.classList.remove('flipped');
-                    card1.textContent = '?';
-                    card2.textContent = '?';
+                    card1.textContent = '';
+                    card2.textContent = '';
+                    this.score = Math.max(0, this.score - 5);
+                    
                     this.messageElement.textContent = 'Ei täsmää. Yritä uudelleen!';
-                    this.messageElement.style.color = '#ff6b6b';
+                    this.messageElement.style.color = '#ef4444';
                 }
                 
                 this.flippedCards = [];
                 this.canFlip = true;
-                this.updateScore();
+                this.updateDisplay();
             }
             
-            updateScore() {
+            updateDisplay() {
                 this.scoreElement.textContent = this.score;
+                this.movesElement.textContent = this.moves;
+                this.pairsElement.textContent = `${this.matchedPairs}/8`;
             }
             
             showHint() {
-                if (this.score >= 5) {
-                    const unflippedCards = Array.from(this.gameBoard.children)
-                        .filter(card => !card.classList.contains('flipped') && !card.classList.contains('matched'));
-                    
-                    if (unflippedCards.length >= 2) {
-                        this.score -= 5;
-                        this.updateScore();
-                        
-                        const hintCard1 = unflippedCards[0];
-                        const hintCard2 = unflippedCards.find(card => 
-                            card !== hintCard1 && card.dataset.value === hintCard1.dataset.value
-                        );
-                        
-                        if (hintCard2) {
-                            hintCard1.style.backgroundColor = '#ffeb3b';
-                            hintCard2.style.backgroundColor = '#ffeb3b';
-                            
-                            setTimeout(() => {
-                                hintCard1.style.backgroundColor = '';
-                                hintCard2.style.backgroundColor = '';
-                            }, 1000);
-                            
-                            this.messageElement.textContent = 'Katso keltaiset kortit!';
-                            this.messageElement.style.color = '#ffb300';
-                        }
-                    }
-                } else {
+                if (this.score < 5) {
                     this.messageElement.textContent = 'Tarvitset vähintään 5 pistettä vihjeeseen!';
-                    this.messageElement.style.color = '#ff6b6b';
+                    this.messageElement.style.color = '#f59e0b';
+                    return;
+                }
+                
+                const unflippedCards = Array.from(this.gameBoard.children)
+                    .filter(card => !card.classList.contains('flipped') && !card.classList.contains('matched'));
+                
+                if (unflippedCards.length >= 2) {
+                    this.score -= 5;
+                    this.updateDisplay();
+                    
+                    const hintCard1 = unflippedCards[0];
+                    const hintCard2 = unflippedCards.find(card => 
+                        card !== hintCard1 && card.dataset.value === hintCard1.dataset.value
+                    );
+                    
+                    if (hintCard2) {
+                        hintCard1.style.boxShadow = '0 0 0 3px #f59e0b';
+                        hintCard2.style.boxShadow = '0 0 0 3px #f59e0b';
+                        
+                        this.messageElement.textContent = 'Katso keltaiset reunukset!';
+                        this.messageElement.style.color = '#f59e0b';
+                        
+                        setTimeout(() => {
+                            hintCard1.style.boxShadow = '';
+                            hintCard2.style.boxShadow = '';
+                        }, 2000);
+                    }
                 }
             }
             
@@ -2279,27 +2148,48 @@
                 this.matchedPairs = 0;
                 this.flippedCards = [];
                 this.canFlip = true;
+                this.gameStarted = false;
                 
                 this.shuffleCards();
                 this.createBoard();
-                this.updateScore();
-                this.movesElement.textContent = '0';
-                this.messageElement.textContent = 'Löydä kaikki parit!';
+                this.updateDisplay();
+                
+                this.messageElement.textContent = 'Klikkaa kortteja löytääksesi parit!';
                 this.messageElement.style.color = '';
             }
             
             endGame() {
-                const stars = this.moves <= 20 ? '⭐⭐⭐' : this.moves <= 30 ? '⭐⭐' : '⭐';
-                this.messageElement.innerHTML = `🎉 Onnittelut! Löysit kaikki parit!<br>
-                Pisteet: ${this.score} | Siirrot: ${this.moves}<br>
-                Arvosana: ${stars}`;
-                this.messageElement.style.color = '#4caf50';
+                const stars = this.moves <= 20 ? '⭐⭐⭐⭐⭐' : 
+                            this.moves <= 25 ? '⭐⭐⭐⭐' : 
+                            this.moves <= 30 ? '⭐⭐⭐' : 
+                            this.moves <= 35 ? '⭐⭐' : '⭐';
+                
+                this.messageElement.innerHTML = `
+                    <strong>🎉 Onnittelut! Löysit kaikki parit!</strong><br>
+                    Pisteet: ${this.score} | Siirrot: ${this.moves}<br>
+                    Arvosana: ${stars}
+                `;
+                this.messageElement.style.color = '#10b981';
             }
         }
         
         // Initialize the game when page loads
         document.addEventListener('DOMContentLoaded', () => {
             const game = new MemoryGame();
+            
+            // Initialize animations
+            animateOnScroll();
+            
+            // Add hover effect to project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
         });
     </script>
 </body>
