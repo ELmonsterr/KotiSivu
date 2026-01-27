@@ -44,7 +44,6 @@
             color: var(--dark);
             background-color: var(--light);
             overflow-x: hidden;
-            padding-bottom: 100px; /* Space for AI note */
         }
 
         h1, h2, h3, h4 {
@@ -940,20 +939,25 @@
             font-size: 0.85rem;
         }
 
-        /* ===== AI NOTE ===== */
-        .ai-note {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
+        /* ===== FINAL NOTE SECTION (After Footer) ===== */
+        .final-note {
             background: rgba(38, 50, 56, 0.95);
             color: rgba(255, 255, 255, 0.8);
-            padding: 12px 20px;
+            padding: 2rem 0;
             text-align: center;
-            font-size: 0.85rem;
-            z-index: 999;
-            backdrop-filter: blur(5px);
+            font-size: 0.9rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .final-note p {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .final-note .copyright-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -1135,11 +1139,6 @@
     </style>
 </head>
 <body>
-    <!-- AI Note at Bottom -->
-    <div class="ai-note">
-        Tämä sivusto on luotu tekoälyn avustuksella oppimisen ja esittelyn vuoksi.
-    </div>
-
     <!-- Edit Button -->
     <button class="edit-btn" id="editBtn">
         <i class="fas fa-edit"></i>
@@ -1777,10 +1776,18 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2026 Elmo Ahonen. Kaikki oikeudet pidätetään. | Sivusto päivitetty viimeksi: Joulukuu 2025</p>
+                <p>&copy; 2026 Elmo Ahonen. Kaikki oikeudet pidätetään.</p>
             </div>
         </div>
     </footer>
+
+    <!-- FINAL NOTE SECTION - After Footer -->
+    <div class="final-note">
+        <div class="container">
+            <p>Tämä sivusto on luotu tekoälyn avustuksella oppimisen ja esittelyn vuoksi.</p>
+            <p class="copyright-text">Sivusto päivitetty viimeksi: Joulukuu 2025</p>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script>
@@ -2293,12 +2300,6 @@
         // Initialize the game when page loads
         document.addEventListener('DOMContentLoaded', () => {
             const game = new MemoryGame();
-            
-            // Add current year to footer
-            const yearSpan = document.querySelector('.copyright');
-            if (yearSpan) {
-                yearSpan.innerHTML = yearSpan.innerHTML.replace('2023', new Date().getFullYear());
-            }
         });
     </script>
 </body>
