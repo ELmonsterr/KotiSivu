@@ -941,94 +941,23 @@
 
         /* ===== FINAL NOTE SECTION (After Footer) ===== */
         .final-note {
-            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
-            color: white;
-            padding: 3rem 0;
+            background: rgba(38, 50, 56, 0.95);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 2rem 0;
             text-align: center;
-            font-size: 0.95rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .final-note .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .note-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .note-header i {
-            font-size: 2rem;
-            color: #64ffda;
-        }
-
-        .note-header h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
-        .note-content {
-            max-width: 800px;
-            line-height: 1.7;
-        }
-
-        .note-content p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-        }
-
-        .ai-disclosure {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            border-left: 4px solid #64ffda;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .tech-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .tech-item i {
-            color: #64ffda;
-        }
-
-        .final-copyright {
-            color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            width: 100%;
         }
 
-        .final-copyright .update-info {
-            display: block;
+        .final-note p {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .final-note .copyright-text {
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 0.5rem;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -1155,20 +1084,6 @@
             .form-row {
                 grid-template-columns: 1fr;
             }
-
-            .final-note .container {
-                padding: 0 1.5rem;
-            }
-
-            .note-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
-
-            .tech-stack {
-                gap: 0.7rem;
-            }
         }
 
         @media (max-width: 576px) {
@@ -1220,15 +1135,6 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-
-            .final-note {
-                padding: 2rem 0;
-            }
-
-            .tech-item {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
         }
     </style>
 </head>
@@ -1276,7 +1182,7 @@
                     </div>
                     <div class="form-group">
                         <label for="location">Sijainti</label>
-                        <input type="text" id="location" class="form-control" value="Helsinki, Suomi">
+                        <input type="text" id="location" class="form-control" value="Oulu, Suomi">
                     </div>
                 </div>
 
@@ -1481,7 +1387,7 @@
                         <p class="note">Huom: Puhelinnumero on esimerkki, eikä ole todellinen.</p>
                         <p>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span id="locationDisplay">Helsinki, Suomi</span>
+                            <span id="locationDisplay">Oulu, Suomi</span>
                         </p>
                     </div>
                 </div>
@@ -1864,7 +1770,7 @@
                     <h3>Yhteystiedot</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-envelope"></i> <span id="footerEmail">elmonster7400@gmail.com</span></li>
-                        <li><i class="fas fa-map-marker-alt"></i> <span id="footerLocation">Helsinki, Suomi</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span id="footerLocation">Oulu, Suomi</span></li>
                     </ul>
                 </div>
             </div>
@@ -1878,46 +1784,8 @@
     <!-- FINAL NOTE SECTION - After Footer -->
     <div class="final-note">
         <div class="container">
-            <div class="note-header">
-                <i class="fas fa-code"></i>
-                <h3>Tekninen Huomio</h3>
-            </div>
-            
-            <div class="note-content">
-                <p>Tämä interaktiivinen portfolio-sivusto on kehitetty osoittamaan nykyaikaista web-kehitystaitoja. Sivusto sisältää dynaamisia ominaisuuksia, kuten reaaliaikaisen sisällön muokkauksen, interaktiivisen pelin ja responsiivisen suunnittelun.</p>
-                
-                <div class="ai-disclosure">
-                    <p><i class="fas fa-robot"></i> <strong>Huomio tekoälyn roolista:</strong> Tämä sivusto on luotu tekoälyn avustuksella oppimisen ja esittelyn vuoksi. AI-automaatio on käytetty koodin generoinnissa, tyylittelyssä ja tekstin luonnissa, mutta kaikki sisältö on henkilökohtaista ja kohdennettu Elmo Ahoselle.</p>
-                </div>
-                
-                <p>Sivuston tavoitteena on näyttää miten nykyaikaisia web-teknologioita voidaan hyödyntää luomaan interaktiivisia ja käyttäjäystävällisiä kokemuksia.</p>
-                
-                <div class="tech-stack">
-                    <div class="tech-item">
-                        <i class="fab fa-html5"></i> HTML5
-                    </div>
-                    <div class="tech-item">
-                        <i class="fab fa-css3-alt"></i> CSS3
-                    </div>
-                    <div class="tech-item">
-                        <i class="fab fa-js"></i> JavaScript
-                    </div>
-                    <div class="tech-item">
-                        <i class="fas fa-mobile-alt"></i> Responsive Design
-                    </div>
-                    <div class="tech-item">
-                        <i class="fas fa-gamepad"></i> Interactive Elements
-                    </div>
-                    <div class="tech-item">
-                        <i class="fas fa-edit"></i> Real-time Editing
-                    </div>
-                </div>
-            </div>
-            
-            <div class="final-copyright">
-                <p>Tämä on opiskelijaprojekti | Sivusto on kehityksessä ja sisältö voi muuttua</p>
-                <span class="update-info">Viimeisin päivitys: Joulukuu 2025</span>
-            </div>
+            <p>Tämä sivusto on luotu tekoälyn avustuksella oppimisen ja esittelyn vuoksi.</p>
+            <p class="copyright-text">Sivusto päivitetty viimeksi: Joulukuu 2025</p>
         </div>
     </div>
 
@@ -2035,7 +1903,7 @@
             heroDescription: "Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.",
             email: "elmonster7400@gmail.com",
             phone: "+358 40 123 4567",
-            location: "Helsinki, Suomi",
+            location: "Oulu, Suomi",
             workTitle: "Voimistelijanvalmentaja",
             workPeriod: "1.1.2020 - Nykyhetki",
             workDescription: "Valmennan 8-12-vuotiaiden aloittelevaa kilparyhmää. Kokemusta erilaisista ikäryhmistä ja tasoista. Opetan tekniikkaa, turvallisuutta ja harjoittelumenetelmiä.",
