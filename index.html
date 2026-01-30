@@ -997,121 +997,6 @@
             text-align: center;
         }
 
-        /* ===== GAME SECTION ===== */
-        .game-section {
-            background: linear-gradient(135deg, #f0f9ff 0%, #fef7ff 100%);
-        }
-
-        .game-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 3rem;
-            background: white;
-            border-radius: 25px;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .game-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--gradient);
-        }
-
-        .game-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .game-title {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .game-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-box {
-            background: #f8fafc;
-            padding: 1.2rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 2px solid #f1f5f9;
-        }
-
-        .stat-box h4 {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-box p {
-            color: var(--primary);
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .game-board {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .card {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 2.2rem;
-            color: white;
-            position: relative;
-            transform-style: preserve-3d;
-        }
-
-        .card::before {
-            content: '?';
-            position: absolute;
-            font-size: 1.8rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .card.flipped {
-            background: white;
-            color: var(--dark);
-            transform: rotateY(180deg);
-        }
-
-        .card.flipped::before {
-            display: none;
-        }
-
-        .card.matched {
-            background: var(--success);
-            cursor: default;
-            transform: scale(0.95);
-        }
-
-        .game-controls {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
         /* ===== FOOTER ===== */
         footer {
             background: var(--dark);
@@ -1306,14 +1191,6 @@
                 padding: 4rem 0;
             }
             
-            .game-board {
-                gap: 8px;
-            }
-            
-            .card {
-                font-size: 1.8rem;
-            }
-            
             .cv-download-box {
                 flex-direction: column;
                 text-align: center;
@@ -1344,10 +1221,6 @@
             .hero-stats {
                 flex-direction: column;
                 gap: 1.5rem;
-            }
-            
-            .game-container {
-                padding: 2rem;
             }
             
             .modal-body {
@@ -1471,7 +1344,6 @@
                     <li><a href="#skills">Taidot</a></li>
                     <li><a href="#projects">Projektit</a></li>
                     <li><a href="#cv">CV</a></li>
-                    <li><a href="#game">Peli</a></li>
                     <li><a href="#contact">Yhteys</a></li>
                 </ul>
             </nav>
@@ -1502,8 +1374,8 @@
                             <i class="fas fa-code"></i>
                         </div>
                         <div class="stat-content">
-                            <h3 id="projectCount">2+</h3>
-                            <p>Projektia</p>
+                            <h3 id="projectCount">1</h3>
+                            <p>Projekti</p>
                         </div>
                     </div>
                     <div class="stat-item">
@@ -1520,8 +1392,8 @@
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <div class="stat-content">
-                            <h3 id="experienceYears">5+</h3>
-                            <p>Vuotta kokemusta</p>
+                            <h3>Opiskelija</h3>
+                            <p>Tietotekniikka</p>
                         </div>
                     </div>
                     <div class="stat-item">
@@ -1731,7 +1603,7 @@
                             </div>
                         </div>
                         
-                        <p id="projectDescriptionDisplay2">Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, interaktiivisen pelin, kuvagallerian ja dynaamisen muokkausominaisuuden.</p>
+                        <p id="projectDescriptionDisplay2">Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, CV-osion ja dynaamisen muokkausominaisuuden.</p>
                         
                         <div class="project-tech" id="projectTagsDisplay2">
                             <span class="project-tag">HTML5</span>
@@ -1745,7 +1617,7 @@
                             <h4>Pääominaisuudet:</h4>
                             <ul class="feature-list">
                                 <li>Responsiivinen design kaikille laitteille</li>
-                                <li>Interaktiivinen muistipeli</li>
+                                <li>Integroitu CV-osio ja lataus</li>
                                 <li>Reaaliaikainen sisällön muokkaus</li>
                                 <li>Animoitu scrollaus ja hover-efektit</li>
                             </ul>
@@ -1754,52 +1626,6 @@
                         <div class="project-links">
                             <a href="#home" class="btn btn-primary">
                                 <i class="fas fa-eye"></i> Esikatsele
-                            </a>
-                            <a href="https://github.com/ELmonsterr" target="_blank" class="btn btn-outline">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Calculator Project -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Laskinsovellus">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-calculator"></i>
-                            </div>
-                            <div class="project-title">
-                                <h3 id="projectTitleDisplay">Yksinkertainen Laskinsovellus</h3>
-                                <p>Ensimmäinen web-sovellus</p>
-                            </div>
-                        </div>
-                        
-                        <p id="projectDescriptionDisplay">Ensimmäinen toimiva web-sovellus, jonka kehitin HTML, CSS ja JavaScript avulla. Sovellus suorittaa peruslaskutoimituksia ja sisältää selkeän käyttöliittymän.</p>
-                        
-                        <div class="project-tech" id="projectTagsDisplay">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">Web Development</span>
-                        </div>
-                        
-                        <div class="project-features">
-                            <h4>Ominaisuudet:</h4>
-                            <ul class="feature-list">
-                                <li>Peruslaskutoimitukset (+, -, ×, ÷)</li>
-                                <li>Responsiivinen design</li>
-                                <li>Virheenkäsittely</li>
-                                <li>Historia-toiminto</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="project-links">
-                            <a href="#" class="btn btn-primary" onclick="showDemoAlert()">
-                                <i class="fas fa-play"></i> Esikatsele
                             </a>
                             <a href="https://github.com/ELmonsterr" target="_blank" class="btn btn-outline">
                                 <i class="fab fa-github"></i> GitHub
@@ -1903,55 +1729,6 @@
         </div>
     </section>
 
-    <!-- Game Section -->
-    <section id="game" class="game-section animate-on-scroll">
-        <div class="container">
-            <div class="section-title">
-                <h2>Muistipeli</h2>
-                <p>Testaa muistiasi tällä hauskalla pelillä!</p>
-            </div>
-            
-            <div class="game-container">
-                <div class="game-header">
-                    <h3 class="game-title">Muistipari</h3>
-                    <p>Löydä kaikki parit mahdollisimman vähillä siirroilla</p>
-                </div>
-                
-                <div class="game-stats">
-                    <div class="stat-box">
-                        <h4>Pisteet</h4>
-                        <p id="score">0</p>
-                    </div>
-                    <div class="stat-box">
-                        <h4>Siirrot</h4>
-                        <p id="moves">0</p>
-                    </div>
-                    <div class="stat-box">
-                        <h4>Parit</h4>
-                        <p id="pairs">0/8</p>
-                    </div>
-                </div>
-                
-                <div class="game-board" id="gameBoard">
-                    <!-- Cards will be generated by JavaScript -->
-                </div>
-                
-                <div class="game-message" id="gameMessage">
-                    Klikkaa kortteja löytääksesi parit!
-                </div>
-                
-                <div class="game-controls">
-                    <button id="resetBtn" class="btn btn-primary">
-                        <i class="fas fa-redo"></i> Aloita Alusta
-                    </button>
-                    <button id="hintBtn" class="btn btn-outline">
-                        <i class="fas fa-lightbulb"></i> Vihje (-5 pistettä)
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -1977,7 +1754,6 @@
                         <li><a href="#skills"><i class="fas fa-chevron-right"></i> Taidot</a></li>
                         <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projektit</a></li>
                         <li><a href="#cv"><i class="fas fa-chevron-right"></i> CV</a></li>
-                        <li><a href="#game"><i class="fas fa-chevron-right"></i> Peli</a></li>
                     </ul>
                 </div>
                 
@@ -2120,11 +1896,6 @@
                 }
             });
         });
-        
-        // Demo alert function
-        function showDemoAlert() {
-            alert("Laskinsovelluksen demo on vielä kehitteillä!\n\nTämä on esimerkki projektista, jonka olen suunnitellut kehittäävänni. Sovellus tulisi sisältämään kaikki peruslaskutoimituksia ja käyttäjäystävällisen käyttöliittymän.");
-        }
         
         // ===== EDIT MODAL FUNCTIONALITY =====
         const editBtn = document.getElementById('editBtn');
@@ -2299,207 +2070,6 @@
             }
         `;
         document.head.appendChild(style);
-
-        // ===== MEMORY GAME =====
-        class MemoryGame {
-            constructor() {
-                this.cards = ['💻', '🎮', '⚽', '🎵', '📱', '🎯', '🎨', '🚀', '💻', '🎮', '⚽', '🎵', '📱', '🎯', '🎨', '🚀'];
-                this.gameBoard = document.getElementById('gameBoard');
-                this.scoreElement = document.getElementById('score');
-                this.movesElement = document.getElementById('moves');
-                this.pairsElement = document.getElementById('pairs');
-                this.messageElement = document.getElementById('gameMessage');
-                this.resetBtn = document.getElementById('resetBtn');
-                this.hintBtn = document.getElementById('hintBtn');
-                
-                this.score = 0;
-                this.moves = 0;
-                this.matchedPairs = 0;
-                this.flippedCards = [];
-                this.canFlip = true;
-                this.gameStarted = false;
-                
-                this.init();
-            }
-            
-            init() {
-                this.shuffleCards();
-                this.createBoard();
-                this.setupEventListeners();
-                this.updateDisplay();
-            }
-            
-            shuffleCards() {
-                for (let i = this.cards.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
-                }
-            }
-            
-            createBoard() {
-                this.gameBoard.innerHTML = '';
-                this.cards.forEach((card, index) => {
-                    const cardElement = document.createElement('div');
-                    cardElement.className = 'card';
-                    cardElement.dataset.index = index;
-                    cardElement.dataset.value = card;
-                    this.gameBoard.appendChild(cardElement);
-                });
-            }
-            
-            setupEventListeners() {
-                this.gameBoard.addEventListener('click', (e) => {
-                    const card = e.target.closest('.card');
-                    if (!card || !this.canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) return;
-                    
-                    this.flipCard(card);
-                });
-                
-                this.resetBtn.addEventListener('click', () => this.resetGame());
-                this.hintBtn.addEventListener('click', () => this.showHint());
-            }
-            
-            flipCard(card) {
-                if (!this.gameStarted) {
-                    this.gameStarted = true;
-                    this.messageElement.textContent = 'Hyvä! Löydä vielä toinen kortti!';
-                }
-                
-                card.classList.add('flipped');
-                card.textContent = card.dataset.value;
-                this.flippedCards.push(card);
-                
-                if (this.flippedCards.length === 2) {
-                    this.moves++;
-                    this.canFlip = false;
-                    this.updateDisplay();
-                    
-                    setTimeout(() => this.checkMatch(), 800);
-                } else {
-                    this.messageElement.textContent = 'Löydä toinen kortti!';
-                }
-            }
-            
-            checkMatch() {
-                const [card1, card2] = this.flippedCards;
-                
-                if (card1.dataset.value === card2.dataset.value) {
-                    card1.classList.add('matched');
-                    card2.classList.add('matched');
-                    this.score += 20;
-                    this.matchedPairs++;
-                    
-                    this.messageElement.textContent = 'Mahtavaa! Löysit parin!';
-                    this.messageElement.style.color = '#10b981';
-                    
-                    if (this.matchedPairs === 8) {
-                        this.endGame();
-                    }
-                } else {
-                    card1.classList.remove('flipped');
-                    card2.classList.remove('flipped');
-                    card1.textContent = '';
-                    card2.textContent = '';
-                    this.score = Math.max(0, this.score - 5);
-                    
-                    this.messageElement.textContent = 'Ei täsmää. Yritä uudelleen!';
-                    this.messageElement.style.color = '#ef4444';
-                }
-                
-                this.flippedCards = [];
-                this.canFlip = true;
-                this.updateDisplay();
-            }
-            
-            updateDisplay() {
-                this.scoreElement.textContent = this.score;
-                this.movesElement.textContent = this.moves;
-                this.pairsElement.textContent = `${this.matchedPairs}/8`;
-            }
-            
-            showHint() {
-                if (this.score < 5) {
-                    this.messageElement.textContent = 'Tarvitset vähintään 5 pistettä vihjeeseen!';
-                    this.messageElement.style.color = '#f59e0b';
-                    return;
-                }
-                
-                const unflippedCards = Array.from(this.gameBoard.children)
-                    .filter(card => !card.classList.contains('flipped') && !card.classList.contains('matched'));
-                
-                if (unflippedCards.length >= 2) {
-                    this.score -= 5;
-                    this.updateDisplay();
-                    
-                    const hintCard1 = unflippedCards[0];
-                    const hintCard2 = unflippedCards.find(card => 
-                        card !== hintCard1 && card.dataset.value === hintCard1.dataset.value
-                    );
-                    
-                    if (hintCard2) {
-                        hintCard1.style.boxShadow = '0 0 0 3px #f59e0b';
-                        hintCard2.style.boxShadow = '0 0 0 3px #f59e0b';
-                        
-                        this.messageElement.textContent = 'Katso keltaiset reunukset!';
-                        this.messageElement.style.color = '#f59e0b';
-                        
-                        setTimeout(() => {
-                            hintCard1.style.boxShadow = '';
-                            hintCard2.style.boxShadow = '';
-                        }, 2000);
-                    }
-                }
-            }
-            
-            resetGame() {
-                this.score = 0;
-                this.moves = 0;
-                this.matchedPairs = 0;
-                this.flippedCards = [];
-                this.canFlip = true;
-                this.gameStarted = false;
-                
-                this.shuffleCards();
-                this.createBoard();
-                this.updateDisplay();
-                
-                this.messageElement.textContent = 'Klikkaa kortteja löytääksesi parit!';
-                this.messageElement.style.color = '';
-            }
-            
-            endGame() {
-                const stars = this.moves <= 20 ? '⭐⭐⭐⭐⭐' : 
-                            this.moves <= 25 ? '⭐⭐⭐⭐' : 
-                            this.moves <= 30 ? '⭐⭐⭐' : 
-                            this.moves <= 35 ? '⭐⭐' : '⭐';
-                
-                this.messageElement.innerHTML = `
-                    <strong>🎉 Onnittelut! Löysit kaikki parit!</strong><br>
-                    Pisteet: ${this.score} | Siirrot: ${this.moves}<br>
-                    Arvosana: ${stars}
-                `;
-                this.messageElement.style.color = '#10b981';
-            }
-        }
-        
-        // Initialize the game when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            const game = new MemoryGame();
-            
-            // Initialize animations
-            animateOnScroll();
-            
-            // Add hover effect to project cards
-            document.querySelectorAll('.project-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-10px)';
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0)';
-                });
-            });
-        });
     </script>
 </body>
 </html>
