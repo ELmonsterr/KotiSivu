@@ -886,17 +886,16 @@
         .project-image {
             height: 200px;
             overflow: hidden;
+            background: linear-gradient(135deg, #f0f9ff 0%, #f8f5ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
+        .project-image i {
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.7;
         }
 
         .project-content {
@@ -1199,6 +1198,10 @@
             .cv-content {
                 padding: 2rem;
             }
+            
+            .project-image i {
+                font-size: 4rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1229,6 +1232,10 @@
             
             .cv-header h1 {
                 font-size: 2.2rem;
+            }
+            
+            .project-image i {
+                font-size: 3.5rem;
             }
         }
     </style>
@@ -1590,7 +1597,7 @@
                 <!-- Portfolio Website Project -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Portfolio Sivusto">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
                     <div class="project-content">
                         <div class="project-header">
