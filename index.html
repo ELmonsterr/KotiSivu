@@ -16,17 +16,18 @@
     <style>
         /* ===== GLOBAL STYLES ===== */
         :root {
-            --primary: #2563eb; /* Moderni sininen */
-            --secondary: #7c3aed; /* Violetti */
-            --accent: #f59e0b; /* Kultainen */
-            --dark: #1e293b; /* Tumma siniharmaa */
-            --light: #f8fafc; /* Vaalea tausta */
-            --gray: #64748b; /* Harmaa */
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
             --success: #10b981;
             --warning: #f59e0b;
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --game-gradient: linear-gradient(135deg, #f59e0b, #ef4444);
         }
 
         * {
@@ -126,6 +127,19 @@
             box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
         }
 
+        .btn-game {
+            background: var(--game-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+        }
+
+        .btn-game:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.5);
+        }
+
         .btn-outline {
             background: transparent;
             color: var(--primary);
@@ -159,6 +173,142 @@
         .highlight {
             color: var(--primary);
             font-weight: 600;
+        }
+
+        /* ===== GAME SECTION ===== */
+        .game-section {
+            background: linear-gradient(135deg, #1e1b2e 0%, #2d1b3a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .game-container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--game-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 4rem;
+            color: white;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 40px rgba(245, 158, 11, 0.8);
+            }
+        }
+
+        .game-card h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .game-card h2::after {
+            background: var(--game-gradient);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+        }
+
+        .game-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .game-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .game-btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .game-btn-primary {
+            background: var(--game-gradient);
+            color: white;
+            border: none;
+        }
+
+        .game-btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+        }
+
+        .game-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .game-btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(245, 158, 11, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .game-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .game-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .game-feature i {
+            color: var(--accent);
+            font-size: 1.2rem;
         }
 
         /* ===== EDIT BUTTON ===== */
@@ -340,166 +490,6 @@
             border-top: 2px solid #f1f5f9;
         }
 
-        /* ===== CV SECTION ===== */
-        .cv-section {
-            background: white;
-        }
-
-        .cv-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .cv-download-box {
-            background: linear-gradient(135deg, #f0f9ff 0%, #f8f5ff 100%);
-            border-radius: 20px;
-            padding: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            border: 2px solid #e0e7ff;
-        }
-
-        .cv-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-        }
-
-        .cv-download-info h3 {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-        }
-
-        .cv-download-info p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-
-        .cv-content {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: var(--shadow);
-        }
-
-        .cv-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 3px solid #e0e7ff;
-        }
-
-        .cv-header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .cv-email {
-            font-size: 1.2rem;
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        .cv-section-item {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .cv-section-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .cv-section-item h2 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .cv-section-item h2 i {
-            font-size: 1.5rem;
-        }
-
-        .cv-job h3, .cv-education h3 {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.4rem;
-        }
-
-        .cv-date {
-            color: var(--gray);
-            font-style: italic;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .cv-content ul {
-            list-style: none;
-            margin-left: 1.5rem;
-        }
-
-        .cv-content li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.8rem;
-            position: relative;
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        .cv-content li::before {
-            content: '•';
-            color: var(--primary);
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -3px;
-        }
-
-        .cv-skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.2rem;
-        }
-
-        .cv-skill-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.8rem 1.2rem;
-            background: white;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-            transition: var(--transition);
-        }
-
-        .cv-skill-item:hover {
-            transform: translateX(5px);
-            border-color: var(--primary);
-        }
-
-        .cv-skill-item i {
-            color: var(--success);
-            font-size: 1.2rem;
-        }
-
         /* ===== HEADER & NAVIGATION ===== */
         header {
             position: fixed;
@@ -630,6 +620,7 @@
         .hero-btns {
             display: flex;
             gap: 1.2rem;
+            flex-wrap: wrap;
             animation: fadeInUp 1s ease 0.4s both;
         }
 
@@ -640,6 +631,7 @@
             padding-top: 2rem;
             border-top: 2px solid rgba(37, 99, 235, 0.1);
             animation: fadeInUp 1s ease 0.6s both;
+            flex-wrap: wrap;
         }
 
         .stat-item {
@@ -1005,7 +997,7 @@
             margin-top: 2rem;
         }
 
-        .project-links a {
+        .project-links a, .project-links button {
             flex: 1;
             text-align: center;
         }
@@ -1148,10 +1140,6 @@
             .nav-links {
                 gap: 1.5rem;
             }
-            
-            .cv-skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
         }
 
         @media (max-width: 768px) {
@@ -1204,25 +1192,18 @@
                 padding: 4rem 0;
             }
             
-            .cv-download-box {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .cv-content {
+            .game-card {
                 padding: 2rem;
             }
             
-            .project-image i {
-                font-size: 4rem;
+            .game-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2.5rem;
             }
             
-            .profile-image-placeholder i {
-                font-size: 6rem;
-            }
-            
-            .profile-image {
-                min-height: 400px;
+            .game-buttons {
+                flex-direction: column;
             }
         }
 
@@ -1252,20 +1233,8 @@
                 padding: 1.5rem;
             }
             
-            .cv-header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .project-image i {
-                font-size: 3.5rem;
-            }
-            
-            .profile-image-placeholder i {
-                font-size: 5rem;
-            }
-            
-            .profile-image {
-                min-height: 350px;
+            .game-features {
+                gap: 1rem;
             }
         }
     </style>
@@ -1380,7 +1349,7 @@
                     <li><a href="#about">Minusta</a></li>
                     <li><a href="#skills">Taidot</a></li>
                     <li><a href="#projects">Projektit</a></li>
-                    <li><a href="#cv">CV</a></li>
+                    <li><a href="#game">Peli</a></li>
                     <li><a href="#contact">Yhteys</a></li>
                 </ul>
             </nav>
@@ -1391,15 +1360,15 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 id="heroTitle">Hei, olen <span class="highlight">Elmo Ahonen</span></h1>
-                <p id="heroDescription">Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.</p>
+                <h1>Hei, olen <span class="highlight">Elmo Ahonen</span></h1>
+                <p>Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.</p>
                 <div class="hero-btns">
                     <a href="#projects" class="btn btn-primary">
                         <i class="fas fa-laptop-code"></i> Katso Projektini
                     </a>
-                    <a href="#cv" class="btn btn-primary">
-                        <i class="fas fa-file-pdf"></i> Katso CV
-                    </a>
+                    <button onclick="avaaUnityPeli()" class="btn btn-game">
+                        <i class="fas fa-gamepad"></i> Pelaa peliä!
+                    </button>
                     <a href="#contact" class="btn btn-outline">
                         <i class="fas fa-envelope"></i> Ota Yhteyttä
                     </a>
@@ -1411,17 +1380,17 @@
                             <i class="fas fa-code"></i>
                         </div>
                         <div class="stat-content">
-                            <h3 id="projectCount">1</h3>
-                            <p>Projekti</p>
+                            <h3>2</h3>
+                            <p>Projektia</p>
                         </div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-icon">
-                            <i class="fas fa-file-pdf"></i>
+                            <i class="fas fa-gamepad"></i>
                         </div>
                         <div class="stat-content">
-                            <h3>CV</h3>
-                            <p>Ladattavissa</p>
+                            <h3>Unity</h3>
+                            <p>Peli valmis</p>
                         </div>
                     </div>
                     <div class="stat-item">
@@ -1438,8 +1407,51 @@
                             <i class="fas fa-trophy"></i>
                         </div>
                         <div class="stat-content">
-                            <h3 id="skillCount">8+</h3>
+                            <h3>8+</h3>
                             <p>Taitoa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GAME SECTION - SUURI PAINIKE PELILLE -->
+    <section id="game" class="game-section animate-on-scroll">
+        <div class="container">
+            <div class="game-container">
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h2>Unity-peli</h2>
+                    <p>Kokeile Unityllä kehittämääni peliä! Pelissä pääset kokemaan hauskan ja haastavan pelikokemuksen suoraan selaimessasi.</p>
+                    
+                    <div class="game-buttons">
+                        <button onclick="avaaUnityPeli()" class="btn game-btn-primary game-btn">
+                            <i class="fas fa-play"></i> Pelaa nyt!
+                        </button>
+                        <button onclick="avaaUnityPeli()" class="btn game-btn-secondary game-btn">
+                            <i class="fas fa-external-link-alt"></i> Avaa uudessa ikkunassa
+                        </button>
+                    </div>
+                    
+                    <div class="game-features">
+                        <div class="game-feature">
+                            <i class="fas fa-cube"></i>
+                            <span>Unity-pelimoottori</span>
+                        </div>
+                        <div class="game-feature">
+                            <i class="fas fa-globe"></i>
+                            <span>Toimii selaimessa</span>
+                        </div>
+                        <div class="game-feature">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Optimoitu suorituskyky</span>
+                        </div>
+                        <div class="game-feature">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <span>Helppo ohjattavuus</span>
                         </div>
                     </div>
                 </div>
@@ -1490,7 +1502,7 @@
                             </div>
                             <div class="contact-details">
                                 <h4>Ansioluettelo</h4>
-                                <p><a href="CV.pdf" download style="color: var(--primary); font-weight: 500;">Lataa CV (PDF)</a></p>
+                                <p><a href="cv/CV.pdf" download style="color: var(--primary); font-weight: 500;">Lataa CV (PDF)</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1533,20 +1545,20 @@
                     <div class="skill-item" id="skillItem1">
                         <div class="skill-header">
                             <span class="skill-name" id="skillName1">Ohjelmoinnin perusteet</span>
-                            <span class="skill-percent" id="skillPercent1">23%</span>
+                            <span class="skill-percent" id="skillPercent1">85%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="23"></div>
+                            <div class="skill-progress" data-width="85"></div>
                         </div>
                     </div>
                     
                     <div class="skill-item" id="skillItem2">
                         <div class="skill-header">
                             <span class="skill-name" id="skillName2">Web-kehitys</span>
-                            <span class="skill-percent" id="skillPercent2">18%</span>
+                            <span class="skill-percent" id="skillPercent2">80%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="18"></div>
+                            <div class="skill-progress" data-width="80"></div>
                         </div>
                     </div>
                     
@@ -1563,10 +1575,10 @@
                     <div class="skill-item" id="skillItem4">
                         <div class="skill-header">
                             <span class="skill-name" id="skillName4">Office-ohjelmistot</span>
-                            <span class="skill-percent" id="skillPercent4">78%</span>
+                            <span class="skill-percent" id="skillPercent4">90%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="78"></div>
+                            <div class="skill-progress" data-width="90"></div>
                         </div>
                     </div>
                 </div>
@@ -1638,14 +1650,14 @@
                                 <i class="fas fa-laptop-code"></i>
                             </div>
                             <div class="project-title">
-                                <h3 id="projectTitleDisplay2">Moderni Portfolio Sivusto</h3>
+                                <h3>Moderni Portfolio Sivusto</h3>
                                 <p>Interaktiivinen henkilökohtainen sivusto</p>
                             </div>
                         </div>
                         
-                        <p id="projectDescriptionDisplay2">Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, CV-osion ja dynaamisen muokkausominaisuuden.</p>
+                        <p>Tämä interaktiivinen portfolio-sivusto on kehitetty HTML5, CSS3 ja JavaScript avulla. Sivusto sisältää henkilökohtaisen esittelyn, CV-osion ja dynaamisen muokkausominaisuuden.</p>
                         
-                        <div class="project-tech" id="projectTagsDisplay2">
+                        <div class="project-tech">
                             <span class="project-tag">HTML5</span>
                             <span class="project-tag">CSS3</span>
                             <span class="project-tag">JavaScript</span>
@@ -1664,7 +1676,7 @@
                         </div>
                         
                         <div class="project-links">
-                            <a href="#home" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary">
                                 <i class="fas fa-eye"></i> Esikatsele
                             </a>
                             <a href="https://github.com/ELmonsterr" target="_blank" class="btn btn-outline">
@@ -1673,95 +1685,46 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CV Section -->
-    <section id="cv" class="cv-section animate-on-scroll">
-        <div class="container">
-            <div class="section-title">
-                <h2>Ansioluettelo</h2>
-                <p>Lataa tai tarkastele CV:täni alla</p>
-            </div>
-            
-            <div class="cv-container">
-                <!-- Download Button -->
-                <div class="cv-download-box">
-                    <div class="cv-icon">
-                        <i class="fas fa-file-pdf"></i>
+                <!-- Unity Game Project -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #1e1b2e 0%, #2d1b3a 100%);">
+                        <i class="fas fa-gamepad" style="color: #f59e0b;"></i>
                     </div>
-                    <div class="cv-download-info">
-                        <h3>Lataa PDF-versio</h3>
-                        <p>Koko ansioluetteloni PDF-muodossa</p>
-                        <a href="CV.pdf" download class="btn btn-primary">
-                            <i class="fas fa-download"></i> Lataa CV (PDF)
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- CV Content -->
-                <div class="cv-content">
-                    <div class="cv-header">
-                        <h1>Elmo Ahonen</h1>
-                        <p class="cv-email">elmonster7400@gmail.com</p>
-                    </div>
-                    
-                    <div class="cv-section-item">
-                        <h2><i class="fas fa-briefcase"></i> Työkokemus</h2>
-                        <div class="cv-job">
-                            <h3>Voimisteluvalmentaja</h3>
-                            <p class="cv-date">1.1.2020 – Nykypäivä</p>
-                            <ul>
-                                <li>Valmennan 8-12-vuotiaita aloittelevaa kilparyhmää</li>
-                                <li>Olen valmentanut erilaisia ryhmiä parin vuoden aikana</li>
-                                <li>Opetan liikkeitä, tekniikkaa ja turvallista harjoittelua</li>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="project-title">
+                                <h3>Unity-peli</h3>
+                                <p>Interaktiivinen pelikokemus</p>
+                            </div>
+                        </div>
+                        
+                        <p>Unityllä kehitetty peli, joka toimii suoraan selaimessa. Peli tarjoaa hauskan ja haastavan kokemuksen pelaajalle.</p>
+                        
+                        <div class="project-tech">
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">WebGL</span>
+                            <span class="project-tag">C#</span>
+                            <span class="project-tag">3D</span>
+                        </div>
+                        
+                        <div class="project-features">
+                            <h4>Pelin ominaisuuksia:</h4>
+                            <ul class="feature-list">
+                                <li>Unity-pelimoottorilla toteutettu</li>
+                                <li>Toimii suoraan selaimessa</li>
+                                <li>WebGL-teknologialla toteutettu</li>
+                                <li>Avaa pelin uuteen välilehteen</li>
                             </ul>
                         </div>
-                    </div>
-                    
-                    <div class="cv-section-item">
-                        <h2><i class="fas fa-graduation-cap"></i> Koulutus</h2>
-                        <div class="cv-education">
-                            <h3>Tieto- ja viestintätekniikka</h3>
-                            <p class="cv-date">8.2025 – Nykypäivä</p>
-                            
-                            <h3>Pohjankartanon yläaste</h3>
-                            <p class="cv-date">8.2021 – 6.2025</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cv-section-item">
-                        <h2><i class="fas fa-star"></i> Osaaminen</h2>
-                        <div class="cv-skills-grid">
-                            <div class="cv-skill-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Vastuunotto ja luotettavuus</span>
-                            </div>
-                            <div class="cv-skill-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Lasten/nuorten kanssa työskentely</span>
-                            </div>
-                            <div class="cv-skill-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Kärsivällisyys ja kannustava ote</span>
-                            </div>
-                            <div class="cv-skill-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Ryhmän ohjaaminen</span>
-                            </div>
-                            <div class="cv-skill-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Kielitaito: Suomi ja Englanti</span>
-                            </div>
-                            <div class="cv-skill-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Uimahyppyjä harrastanut 7 vuotta</span>
-                            </div>
-                            <div class="cv-skill-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Tietokoneiden käyttö</span>
-                            </div>
+                        
+                        <div class="project-links">
+                            <button onclick="avaaUnityPeli()" class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">
+                                <i class="fas fa-play"></i> Pelaa peliä
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1793,7 +1756,7 @@
                         <li><a href="#about"><i class="fas fa-chevron-right"></i> Minusta</a></li>
                         <li><a href="#skills"><i class="fas fa-chevron-right"></i> Taidot</a></li>
                         <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projektit</a></li>
-                        <li><a href="#cv"><i class="fas fa-chevron-right"></i> CV</a></li>
+                        <li><a href="#game"><i class="fas fa-chevron-right"></i> Peli</a></li>
                     </ul>
                 </div>
                 
@@ -1802,7 +1765,7 @@
                     <ul class="footer-links">
                         <li><a href="mailto:elmonster7400@gmail.com"><i class="fas fa-envelope"></i> elmonster7400@gmail.com</a></li>
                         <li><a href="#"><i class="fas fa-map-marker-alt"></i> Oulu, Suomi</a></li>
-                        <li><a href="CV.pdf" download><i class="fas fa-file-pdf"></i> Lataa CV (PDF)</a></li>
+                        <li><a href="cv/CV.pdf" download><i class="fas fa-file-pdf"></i> Lataa CV (PDF)</a></li>
                         <li><a href="https://github.com/ELmonsterr" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
                     </ul>
                 </div>
@@ -1816,6 +1779,13 @@
 
     <!-- JavaScript -->
     <script>
+        // ===== UNITY PELIN AVAUS - OIKEA POLKU =====
+        // TÄRKEÄ: Peli on "Projekti2" kansiossa (välilyönnillä), joten polku on "Projekti2/Game.html"
+        function avaaUnityPeli() {
+            // Avaa Projekti2/Game.html uudessa välilehdessä
+            window.open('Projekti2/Game.html', '_blank');
+        }
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
@@ -1963,11 +1933,11 @@
             document.body.style.overflow = 'hidden';
             
             // Load current values into form
-            document.getElementById('heroTitle').value = document.getElementById('heroTitle').textContent;
-            document.getElementById('heroDescription').value = document.getElementById('heroDescription').textContent;
+            document.getElementById('heroTitle').value = "Elmo Ahonen";
+            document.getElementById('heroDescription').value = "Tervetuloa henkilökohtaisille kotisivuilleni! Olen tieto- ja viestintätekniikan opiskelija sekä intohimoinen voimisteluvalmentaja. Tällä sivustolla esittelen osaamistani ja tulevaisuuden suunnitelmia.";
             document.getElementById('email').value = document.getElementById('emailDisplay').textContent;
             document.getElementById('location').value = document.getElementById('locationDisplay').textContent;
-            document.getElementById('cvLink').value = "CV.pdf"; // Default CV link
+            document.getElementById('cvLink').value = "CV.pdf";
             
             // Load skills
             document.getElementById('skill1').value = `${document.getElementById('skillName1').textContent}:${document.getElementById('skillPercent1').textContent.replace('%', '')}`;
@@ -1993,8 +1963,8 @@
         // Save changes
         saveChangesBtn.addEventListener('click', () => {
             // Update hero section
-            document.getElementById('heroTitle').textContent = document.getElementById('heroTitle').value;
-            document.getElementById('heroDescription').textContent = document.getElementById('heroDescription').value;
+            document.querySelector('#home h1').innerHTML = `Hei, olen <span class="highlight">${document.getElementById('heroTitle').value}</span>`;
+            document.querySelector('#home .hero-content > p').textContent = document.getElementById('heroDescription').value;
             
             // Update personal info
             document.getElementById('emailDisplay').textContent = document.getElementById('email').value;
@@ -2002,9 +1972,9 @@
             
             // Update CV links
             const cvLink = document.getElementById('cvLink').value;
-            const cvLinks = document.querySelectorAll('a[href="CV.pdf"], a[href="cv.pdf"]');
+            const cvLinks = document.querySelectorAll('a[href="cv/CV.pdf"], a[href="CV.pdf"]');
             cvLinks.forEach(link => {
-                link.href = cvLink;
+                link.href = `cv/${cvLink}`;
                 link.download = cvLink;
             });
             
@@ -2035,7 +2005,7 @@
         // Reset to defaults
         resetChangesBtn.addEventListener('click', () => {
             if (confirm('Haluatko varmasti palauttaa kaikki tiedot oletusarvoihin?')) {
-                document.getElementById('heroTitle').value = defaultValues.heroTitle.replace("<span class='highlight'>", "").replace("</span>", "");
+                document.getElementById('heroTitle').value = "Elmo Ahonen";
                 document.getElementById('heroDescription').value = defaultValues.heroDescription;
                 document.getElementById('email').value = defaultValues.email;
                 document.getElementById('location').value = defaultValues.location;
